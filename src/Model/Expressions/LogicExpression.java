@@ -1,6 +1,5 @@
 package Model.Expressions;
 
-import Exceptions.DivisionByZero;
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
 import Model.Types.BoolType;
@@ -29,9 +28,8 @@ public class LogicExpression extends BinaryExpression{
     }
 
     @Override
-    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException, DivisionByZero {
+    public IValue eval(MyIDictionary<String, IValue> symbolsTable) throws MyException {
         IValue firstValue, secondValue;
-
         firstValue = this.leftSide.eval(symbolsTable);
         if(firstValue.getType().equals(new BoolType())){
             secondValue = this.rightSide.eval(symbolsTable);
@@ -49,6 +47,11 @@ public class LogicExpression extends BinaryExpression{
         }
         else
             throw new MyException("First operand is not boolean");
+    }
+
+    @Override
+    public LogicExpression deepCopy() {
+        return new LogicExpression(this.leftSide.deepCopy(), this.rightSide.deepCopy(), this.operand);
     }
 
     @Override

@@ -7,7 +7,7 @@ public class IntValue implements IValue{
     int value;
 
     public IntValue(){
-        this.value = 0;
+        this.value = (new IntType()).getDefaultValue().getValue();
     }
 
     public IntValue(int value){
@@ -25,6 +25,18 @@ public class IntValue implements IValue{
     @Override
     public IType getType() {
         return new IntType();
+    }
+
+    @Override
+    public IntValue deepCopy() {
+        return new IntValue(this.value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof IntValue))
+            return false;
+        return this.value == ((IntValue) obj).getValue();
     }
 
     @Override

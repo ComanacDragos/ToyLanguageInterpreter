@@ -6,13 +6,14 @@ import Model.Types.IType;
 public class BoolValue implements IValue{
     boolean value;
 
-    public BoolValue(){
-        this.value = false;
-    }
-
     public BoolValue(boolean value){
         this.value = value;
     }
+
+    public BoolValue(){
+        this.value = (new BoolType()).getDefaultValue().getValue();
+    }
+
 
     public boolean getValue(){
         return this.value;
@@ -25,6 +26,18 @@ public class BoolValue implements IValue{
     @Override
     public IType getType() {
         return new BoolType();
+    }
+
+    @Override
+    public BoolValue deepCopy() {
+        return new BoolValue(this.value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof BoolValue))
+            return false;
+        return this.value == ((BoolValue) obj).getValue();
     }
 
     @Override

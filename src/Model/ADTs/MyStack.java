@@ -3,17 +3,22 @@ package Model.ADTs;
 import Exceptions.EmptyCollection;
 import Exceptions.MyException;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.stream.Stream;
+
 
 public class MyStack<T> implements MyIStack<T>{
-    Stack<T> stack;
+    Deque<T> stack;
 
     public MyStack(){
-        this.stack = new Stack<>();
+        this.stack = new ArrayDeque<>() {
+        };
     }
 
     @Override
-    public T pop() throws EmptyCollection {
+    public T pop() throws MyException {
         if(this.stack.isEmpty())
             throw new EmptyCollection("Empty stack");
         return this.stack.pop();
@@ -37,17 +42,24 @@ public class MyStack<T> implements MyIStack<T>{
     }
 
     @Override
+    public Iterator<T> iterator() {
+        return this.stack.iterator();
+    }
+
+    @Override
+    public Stream<T> stream() {
+        return this.stack.stream();
+    }
+
+    @Override
     public String toString() {
         if(this.stack.isEmpty())
-            return "|";
+            return "";
 
         StringBuilder contents = new StringBuilder();
 
-        Stack<T> clone = (Stack<T>) this.stack.clone();
-
-        while (!clone.isEmpty()){
-            contents.append(clone.pop().toString()).append(" | ");
-        }
+        for(T element : this.stack)
+            contents.append("(\n").append(element.toString()).append("\n)\n");
         return contents.toString();
     }
 }

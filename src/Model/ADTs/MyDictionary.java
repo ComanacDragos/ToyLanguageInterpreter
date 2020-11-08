@@ -5,6 +5,9 @@ import Exceptions.InexistentKey;
 
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 
 public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     HashMap<Key, Value> dictionary;
@@ -54,14 +57,24 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     }
 
     @Override
+    public Set<Key> keySet() {
+        return this.dictionary.keySet();
+    }
+
+    @Override
+    public Stream<Map.Entry<Key, Value>> stream() {
+        return this.dictionary.entrySet().stream();
+    }
+
+    @Override
     public String toString() {
         if(this.dictionary.isEmpty())
-            return "|";
+            return "";
 
         StringBuilder builder = new StringBuilder();
 
         for(Key key : this.dictionary.keySet())
-            builder.append(key.toString()).append(" -> ").append(this.dictionary.get(key)).append(" | ");
+            builder.append(key.toString()).append(" -> ").append(this.dictionary.get(key)).append('\n');
         return builder.toString();
     }
 }

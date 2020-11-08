@@ -1,7 +1,10 @@
 package Model.ADTs;
 
 import Exceptions.EmptyCollection;
+
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.stream.Stream;
 
 public class MyList<T> implements MyIList<T>{
     LinkedList<T> list;
@@ -38,13 +41,23 @@ public class MyList<T> implements MyIList<T>{
     }
 
     @Override
+    public Iterator<T> iterator() {
+        return this.list.iterator();
+    }
+
+    @Override
+    public Stream<T> stream() {
+        return this.list.stream();
+    }
+
+    @Override
     public String toString() {
         if(this.list.isEmpty())
-            return "|";
+            return "";
 
         StringBuilder builder = new StringBuilder();
         for(T item : this.list){
-            builder.append(item.toString()).append(" | ");
+            builder.append(item.toString()).append('\n');
         }
         return builder.toString();
     }
