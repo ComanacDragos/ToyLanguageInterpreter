@@ -4,16 +4,17 @@ import Exceptions.EmptyCollection;
 import Exceptions.InexistentKey;
 
 
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
 public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
-    HashMap<Key, Value> dictionary;
+    Map<Key, Value> dictionary;
 
     public MyDictionary(){
-        this.dictionary = new HashMap<>();
+        this.dictionary = new LinkedHashMap<>();
     }
 
     @Override
@@ -59,6 +60,23 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     @Override
     public Set<Key> keySet() {
         return this.dictionary.keySet();
+    }
+
+    @Override
+    public Collection<Value> values() {
+        return this.dictionary.values();
+    }
+
+    @Override
+    public void setContent(Map<Key, Value> newContent) {
+        this.dictionary.clear();
+
+        newContent.forEach(this.dictionary::put);
+    }
+
+    @Override
+    public Map<Key, Value> getContent() {
+        return this.dictionary;
     }
 
     @Override
