@@ -1,36 +1,25 @@
+Program: 6
 Execution stack
 (
-bool = a;
+bool a;
 a = true;
-bool = b;
+bool b;
 print((a AND b));
 print((a OR b));
 )
 Symbols table
 Out
 File table
+Heap
 
+
+
+Program: 6
 Execution stack
 (
-bool = a;
+bool a;
 a = true;
-bool = b;
-)
-(
-print((a AND b));
-print((a OR b));
-)
-Symbols table
-Out
-File table
-
-Execution stack
-(
-bool = a;
-a = true;
-)
-(
-bool = b;
+bool b;
 )
 (
 print((a AND b));
@@ -39,16 +28,16 @@ print((a OR b));
 Symbols table
 Out
 File table
+Heap
 
+
+
+Program: 6
 Execution stack
 (
-bool = a;
-)
-(
+bool a;
 a = true;
-)
-(
-bool = b;
+bool b;
 )
 (
 print((a AND b));
@@ -57,13 +46,101 @@ print((a OR b));
 Symbols table
 Out
 File table
+Heap
 
+
+
+Program: 6
+Execution stack
+(
+bool a;
+a = true;
+)
+(
+bool b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 6
+Execution stack
+(
+bool a;
+a = true;
+)
+(
+bool b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 6
+Execution stack
+(
+bool a;
+)
+(
+a = true;
+)
+(
+bool b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 6
+Execution stack
+(
+bool a;
+)
+(
+a = true;
+)
+(
+bool b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 6
 Execution stack
 (
 a = true;
 )
 (
-bool = b;
+bool b;
 )
 (
 print((a AND b));
@@ -73,10 +150,34 @@ Symbols table
 a -> false
 Out
 File table
+Heap
 
+
+
+Program: 6
 Execution stack
 (
-bool = b;
+a = true;
+)
+(
+bool b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+a -> false
+Out
+File table
+Heap
+
+
+
+Program: 6
+Execution stack
+(
+bool b;
 )
 (
 print((a AND b));
@@ -86,7 +187,28 @@ Symbols table
 a -> true
 Out
 File table
+Heap
 
+
+
+Program: 6
+Execution stack
+(
+bool b;
+)
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+a -> true
+Out
+File table
+Heap
+
+
+
+Program: 6
 Execution stack
 (
 print((a AND b));
@@ -97,7 +219,26 @@ a -> true
 b -> false
 Out
 File table
+Heap
 
+
+
+Program: 6
+Execution stack
+(
+print((a AND b));
+print((a OR b));
+)
+Symbols table
+a -> true
+b -> false
+Out
+File table
+Heap
+
+
+
+Program: 6
 Execution stack
 (
 print((a AND b));
@@ -110,7 +251,28 @@ a -> true
 b -> false
 Out
 File table
+Heap
 
+
+
+Program: 6
+Execution stack
+(
+print((a AND b));
+)
+(
+print((a OR b));
+)
+Symbols table
+a -> true
+b -> false
+Out
+File table
+Heap
+
+
+
+Program: 6
 Execution stack
 (
 print((a OR b));
@@ -121,7 +283,26 @@ b -> false
 Out
 false
 File table
+Heap
 
+
+
+Program: 6
+Execution stack
+(
+print((a OR b));
+)
+Symbols table
+a -> true
+b -> false
+Out
+false
+File table
+Heap
+
+
+
+Program: 6
 Execution stack
 Symbols table
 a -> true
@@ -130,4 +311,7 @@ Out
 false
 true
 File table
+Heap
+
+
 

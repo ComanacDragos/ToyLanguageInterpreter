@@ -97,6 +97,15 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
     }
 
     @Override
+    public MyIDictionary<Key, Value> shallowCopy() {
+        MyIDictionary<Key, Value> shallowCopy = new MyDictionary<>();
+
+        this.dictionary.forEach(shallowCopy::put);
+
+        return shallowCopy;
+    }
+
+    @Override
     public String toString() {
         synchronized (this.dictionary) {
             if (this.dictionary.isEmpty())
@@ -109,5 +118,4 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
             return builder.toString();
         }
     }
-
 }

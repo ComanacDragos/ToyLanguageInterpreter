@@ -1,14 +1,19 @@
 package Model.Statements.ControlFlowStatements;
 
 import Exceptions.MyException;
+import Model.ADTs.MyDictionary;
 import Model.ADTs.MyIDictionary;
 import Model.ADTs.MyIStack;
 import Model.Expressions.IExpression;
 import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Types.BoolType;
+import Model.Types.IType;
 import Model.Values.BoolValue;
 import Model.Values.IValue;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class IfStatement implements IStatement {
@@ -64,6 +69,20 @@ public class IfStatement implements IStatement {
             throw new MyException("Conditional expression is not a boolean");
 
         return null;
+    }
+
+    @Override
+    public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        IType expressionType = this.expression.typeCheck(typeEnvironment);
+        if(expressionType.equals(new BoolType())){
+            this.thenStatement.typeCheck(typeEnvironment.shallowCopy());
+            this.elseStatement.typeCheck(typeEnvironment.shallowCopy());
+
+            return typeEnvironment;
+        }
+        else{
+            throw new MyException("The condition: " + this.expression + " of IF has not the type bool");
+        }
     }
 
     @Override

@@ -12,7 +12,7 @@ import Model.Statements.*;
 import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
-import Model.Statements.FileStatements.CloseReadFile;
+import Model.Statements.FileStatements.CloseReadFileStatement;
 import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
 import Model.Statements.HeapStatements.NewStatement;
@@ -179,7 +179,7 @@ public class View {
                                         new ReadFileStatement(new ValueExpression(new StringValue("src/Files/test.in")), "varc"),
                                         new PrintStatement(new VariableExpression("varc"))
                                 ),
-                                new CloseReadFile(new ValueExpression(new StringValue("src/Files/test.in")))
+                                new CloseReadFileStatement(new ValueExpression(new StringValue("src/Files/test.in")))
                         )
                 )
         );
