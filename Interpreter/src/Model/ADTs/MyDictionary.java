@@ -2,10 +2,12 @@ package Model.ADTs;
 
 import Exceptions.EmptyCollection;
 import Exceptions.InexistentKey;
+import Exceptions.MyException;
 
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
@@ -24,7 +26,11 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
 
     @Override
     public Value lookup(Key key) {
-        return this.dictionary.get(key);
+        Value value = this.dictionary.get(key);
+        if(Objects.nonNull(value)){
+            return value;
+        }
+        throw new MyException(key + " is not a key");
     }
 
     @Override

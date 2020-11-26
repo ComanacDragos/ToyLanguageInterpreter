@@ -1,8 +1,10 @@
 package Model.Expressions;
 
+import Exceptions.MyException;
 import Exceptions.VariableNotDefined;
 import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
+import Model.Types.IType;
 import Model.Values.IValue;
 
 public class VariableExpression implements IExpression{
@@ -25,6 +27,11 @@ public class VariableExpression implements IExpression{
         if(!symbolsTable.isDefined(id))
             throw new VariableNotDefined("Variable " + id + " not defined");
         return symbolsTable.lookup(id);
+    }
+
+    @Override
+    public IType typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        return typeEnvironment.lookup(id);
     }
 
     @Override

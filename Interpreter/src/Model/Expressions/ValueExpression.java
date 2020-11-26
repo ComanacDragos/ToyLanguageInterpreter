@@ -27,6 +27,11 @@ public class ValueExpression implements IExpression{
     }
 
     @Override
+    public IType typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
+        return this.value.getType();
+    }
+
+    @Override
     public ValueExpression deepCopy() {
         return new ValueExpression(this.value.deepCopy());
     }
