@@ -1,0 +1,106 @@
+Program: 4
+Execution stack
+(
+int a;
+a = (10 / 0);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+int a;
+)
+(
+a = (10 / 0);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+int a;
+)
+(
+a = (10 / 0);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+a = (10 / 0);
+print(a);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+a = (10 / 0);
+print(a);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+a = (10 / 0);
+)
+(
+print(a);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+a = (10 / 0);
+)
+(
+print(a);
+)
+Symbols table
+a -> 0
+Out
+File table
+Heap
+
+
+

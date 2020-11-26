@@ -1,6 +1,0 @@
-Execution stack
-Symbols table
-a -> 5
-Out
-File table
-
