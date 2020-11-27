@@ -27,6 +27,7 @@ import Model.Values.IntValue;
 import Model.Values.StringValue;
 import Repository.IRepository;
 import Repository.Repository;
+import com.sun.jdi.Value;
 
 import java.io.BufferedReader;
 import java.util.LinkedHashMap;
@@ -742,13 +743,55 @@ public class View {
                 "v=1;" +
                 "while(v!=10){" +
                 "fork(print(v);" +
-                "new(a, v);" +
-                "v=v+1;" +
-                "v=v+1;" +
-                "v=v+1;" +
-                "v=v+1;" +
+                    "new(a, v);" +
+                    "v=v+1;" +
+                    "v=v+1;" +
+                    "v=v+1;" +
+                    "v=v+1;" +
                 ");" +
                 "v=v+1;}"
+        );
+
+        IStatement ex18 = new CompoundStatement(
+                new CompoundStatement(
+                    new VariableDeclarationStatement("a",
+                            new BoolType()),
+                    new CompoundStatement(
+                            new AssignStatement("a",
+                                    new ValueExpression(
+                                            new BoolValue(true)
+                                    )
+                            ),
+                            new IfStatement(
+                                    new VariableExpression("a"),
+                                    new VariableDeclarationStatement("b",
+                                            new IntType()),
+                                    new AssignStatement("a",
+                                            new ValueExpression(
+                                                   new BoolValue(false)
+                                            ))
+                            )
+                    )
+                ),
+                new CompoundStatement(
+                    new PrintStatement(
+                            new VariableExpression("a")
+                    ),
+                    new PrintStatement(
+                            new VariableExpression("b")
+                    )
+                )
+        );
+
+        this.programsDescriptions.put(ex18,
+                "bool a;" +
+                "a = true;" +
+                "if(a){" +
+                    "int b;}" +
+                "else{" +
+                    "a = false;}" +
+                "print(a);" +
+                "print(b);"
         );
 
         AtomicInteger currentKey = new AtomicInteger(1);
