@@ -1,6 +1,7 @@
 package Model.Statements.HeapStatements;
 
 import Exceptions.MyException;
+import Exceptions.VariableNotDefined;
 import Model.ADTs.MyHeap;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
@@ -54,8 +55,16 @@ public class NewStatement implements IStatement {
 
     @Override
     public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
-        IType variableType = typeEnvironment.lookup(this.variableName);
-        IType expressionType = this.expression.typeCheck(typeEnvironment);
+        IType variableType;
+
+        try {
+            variableType = typeEnvironment.lookup(this.variableName);
+        }
+        catch (MyException exception){
+            throw new VariableNotDefined(this.variableName);
+        }
+
+                IType expressionType = this.expression.typeCheck(typeEnvironment);
 
         if(variableType.equals(new ReferenceType(expressionType))){
             return typeEnvironment;

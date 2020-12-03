@@ -1,6 +1,7 @@
 package Model.Statements.FileStatements;
 
 import Exceptions.MyException;
+import Exceptions.VariableNotDefined;
 import Model.ADTs.MyIDictionary;
 import Model.Expressions.IExpression;
 import Model.ProgramState;
@@ -91,7 +92,13 @@ public class ReadFileStatement implements IStatement {
     @Override
     public MyIDictionary<String, IType> typeCheck(MyIDictionary<String, IType> typeEnvironment) throws MyException {
         IType expressionType = this.expression.typeCheck(typeEnvironment);
-        IType variableType = typeEnvironment.lookup(this.variableName);
+        IType variableType;
+        try {
+            variableType = typeEnvironment.lookup(this.variableName);
+        }
+        catch (MyException exception){
+            throw new VariableNotDefined(this.variableName);
+        }
 
         if(expressionType.equals(new StringType())){
             if(variableType.equals(new IntType())) {

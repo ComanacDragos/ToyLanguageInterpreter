@@ -1,7 +1,6 @@
 package Model.Statements.ControlFlowStatements;
 
 import Exceptions.MyException;
-import Model.ADTs.MyDictionary;
 import Model.ADTs.MyIDictionary;
 import Model.ADTs.MyIStack;
 import Model.Expressions.IExpression;
@@ -11,9 +10,6 @@ import Model.Types.BoolType;
 import Model.Types.IType;
 import Model.Values.BoolValue;
 import Model.Values.IValue;
-
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 public class IfStatement implements IStatement {
