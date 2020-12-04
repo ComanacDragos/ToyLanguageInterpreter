@@ -64,7 +64,7 @@ public class NewStatement implements IStatement {
             throw new VariableNotDefined(this.variableName);
         }
 
-                IType expressionType = this.expression.typeCheck(typeEnvironment);
+        IType expressionType = this.expression.typeCheck(typeEnvironment);
 
         if(variableType.equals(new ReferenceType(expressionType))){
             return typeEnvironment;
