@@ -26,12 +26,34 @@ public class Controller {
         return repository;
     }
 
+    public List<ProgramState> getPrograms(){
+        return this.repository.getPrograms();
+    }
+
+    public void setRepositoryPrograms(List<ProgramState> programs){
+        this.repository.setPrograms(programs);
+    }
+
     public void setRepository(IRepository repository) {
         this.repository = repository;
     }
 
+    public void setExecutorService(ExecutorService executorService) {
+        this.executorService = executorService;
+    }
+
+    public ExecutorService getExecutorService() {
+        return executorService;
+    }
+
     public void addProgramState(ProgramState newProgram){
         this.repository.addProgram(newProgram);
+    }
+
+    public Optional<ProgramState> getProgram(Integer id){
+        return this.repository.getPrograms().stream()
+                .filter(p -> p.getProgramId().equals(id))
+                .findFirst();
     }
 
     List<ProgramState> removeCompletedPrograms(List<ProgramState> inProgramsList){
@@ -71,7 +93,7 @@ public class Controller {
          return validAddresses;
     }
 
-    void oneStepForAllPrograms(List<ProgramState> programStates){
+    public void oneStepForAllPrograms(List<ProgramState> programStates){
         programStates.forEach(program -> this.repository.logProgramStateExec(program));
 
         List<Callable<ProgramState>> callables = programStates.stream()
@@ -127,6 +149,10 @@ public class Controller {
         }
         this.executorService.shutdownNow();
         this.repository.setPrograms(programStates);
+    }
+
+    public void emptyLogFile(){
+        this.repository.emptyLogFile();
     }
 
     @Override

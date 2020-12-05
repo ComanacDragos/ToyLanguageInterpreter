@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GUI.GUIController.ControllerSelectProgram">
+   <children>
+      <ListView fx:id="programsListView" layoutY="50.0" onMouseClicked="#handleSelectProgram" prefHeight="670.0" prefWidth="720.0" />
+      <Label layoutX="331.0" layoutY="20.0" prefHeight="17.0" prefWidth="58.0" text="Programs" />
+   </children>
+</AnchorPane>
