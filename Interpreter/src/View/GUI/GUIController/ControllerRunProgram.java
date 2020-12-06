@@ -78,6 +78,7 @@ public class ControllerRunProgram {
             this.setProgramIdsListView();
             this.setExecutionStackListView();
             this.setSymbolsTableView();
+            this.setHeapTableView();
             this.setFileTableListView();
             this.setOutListView();
         }
@@ -132,6 +133,20 @@ public class ControllerRunProgram {
         );
 
         this.symbolsTableView.setItems(variables);
+    }
+
+    void setHeapTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<Pair<Integer, IValue>> memory = FXCollections.observableArrayList();
+
+         memory.addAll(
+                program.getHeap().stream()
+                        .map(e -> new Pair<>(e.getKey(), e.getValue()))
+                        .collect(Collectors.toList())
+        );
+
+        this.heapTableView.setItems(memory);
     }
 
     void setFileTableListView(){
