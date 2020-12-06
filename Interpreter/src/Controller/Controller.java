@@ -56,7 +56,7 @@ public class Controller {
                 .findFirst();
     }
 
-    List<ProgramState> removeCompletedPrograms(List<ProgramState> inProgramsList){
+    public List<ProgramState> removeCompletedPrograms(List<ProgramState> inProgramsList){
         return inProgramsList.stream()
                 .filter(ProgramState::isNotCompleted)
                 .collect(Collectors.toList());
@@ -102,6 +102,7 @@ public class Controller {
 
         List<ProgramState> newProgramsList = new LinkedList<>();
         try {
+            //String exceptions = "";
             newProgramsList = this.executorService.invokeAll(callables).stream()
                     .map(future ->{
                         ProgramState toReturn = null;
@@ -111,6 +112,7 @@ public class Controller {
                         catch (MyException | InterruptedException | ExecutionException exception){
                             System.out.println(exception.getMessage());
                             System.exit(1);
+                            //exceptions += exception.getMessage() + "\n";
                         }
                         return toReturn;
                     })
@@ -149,6 +151,17 @@ public class Controller {
         }
         this.executorService.shutdownNow();
         this.repository.setPrograms(programStates);
+    }
+
+    public void runGarbageCollector(){
+        MyIDictionary<Integer, IValue> heap = this.repository.getPrograms().get(0).getHeap();
+
+        heap.setContent(
+                this.garbageCollector(
+                        this.getValidAddresses(),
+                        heap.getContent()
+                )
+        );
     }
 
     public void emptyLogFile(){

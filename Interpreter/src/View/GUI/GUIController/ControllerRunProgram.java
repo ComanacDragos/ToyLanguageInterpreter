@@ -1,22 +1,24 @@
 package View.GUI.GUIController;
 
 import Controller.Controller;
-import Model.ADTs.MyIStack;
+import Exceptions.MyException;
 import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class ControllerRunProgram {
@@ -51,6 +53,12 @@ public class ControllerRunProgram {
     @FXML
     void initialize(){
         this.programIdsListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        this.heapAddressColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
+        this.heapValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
+
+        this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
+        this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
     }
 
     public void setParentStage(Stage parentStage) {
@@ -64,12 +72,23 @@ public class ControllerRunProgram {
     public void setController(Controller controller) {
         this.controller = controller;
         this.controller.emptyLogFile();
+        this.controller.setExecutorService(Executors.newFixedThreadPool(2));
     }
 
     void update(){
-        this.setNumberOfProgramStatesLabel();
-        this.setProgramIdsListView();
-        this.setExecutionStackListView();
+        try {
+            this.setNumberOfProgramStatesLabel();
+            this.setProgramIdsListView();
+            this.setExecutionStackListView();
+            this.setSymbolsTableView();
+            this.setFileTableListView();
+            this.setOutListView();
+        }
+        catch (MyException exception){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(exception.getMessage());
+            alert.showAndWait();
+        }
     }
 
     void setNumberOfProgramStatesLabel(){
@@ -91,18 +110,12 @@ public class ControllerRunProgram {
     }
 
     void setExecutionStackListView(){
-        Optional<ProgramState> program = this.controller.getProgram(this.getSelectedProgramId());
+        ProgramState program = this.getSelectedProgram();
 
-        if(program.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Program is done");
-            alert.showAndWait();
-            return;
-        }
         ObservableList<IStatement> statements = FXCollections.observableArrayList();
 
         statements.addAll(
-                program.get().getExecutionStack()
+                program.getExecutionStack()
                 .stream()
                 .collect(Collectors.toList())
         );
@@ -111,33 +124,96 @@ public class ControllerRunProgram {
     }
 
     void setSymbolsTableView(){
-        Optional<ProgramState> program = this.controller.getProgram(this.getSelectedProgramId());
+        ProgramState program = this.getSelectedProgram();
 
-        if(program.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Program is done");
-            alert.showAndWait();
-            return;
-        }
+        ObservableList<Pair<String, IValue>> variables = FXCollections.observableArrayList();
 
+        variables.addAll(
+                program.getSymbolsTable().stream()
+                    .map(e -> new Pair<>(e.getKey(), e.getValue()))
+                    .collect(Collectors.toList())
+        );
+
+        this.symbolsTableView.setItems(variables);
     }
 
-    Integer getSelectedProgramId(){
+    void setFileTableListView(){
+       ProgramState program = this.getSelectedProgram();
+
+        ObservableList<String> files = FXCollections.observableArrayList();
+
+        files.addAll(
+                program.getFileTable().stream()
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList())
+        );
+
+        this.fileTableListView.setItems(files);
+    }
+
+    void setOutListView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<String> out = FXCollections.observableArrayList();
+
+        out.addAll(
+                program.getOut().stream()
+                        .map(IValue::toString)
+                        .collect(Collectors.toList())
+        );
+
+        this.outListView.setItems(out);
+    }
+
+    ProgramState getSelectedProgram() throws MyException{
         Integer id = this.programIdsListView.getSelectionModel().getSelectedItem();
 
-        if(Objects.nonNull(id))
-            return id;
-        return this.programIdsListView.getItems().get(0);
+        if(!Objects.nonNull(id)){
+            this.programIdsListView.getSelectionModel().selectIndices(0);
+            id = this.programIdsListView.getItems().get(0);
+
+        }
+        Optional<ProgramState> program = this.controller.getProgram(id);
+        if(program.isEmpty())
+            throw new MyException("Program is done");
+        return program.get();
     }
 
-    public void handleRunAnotherProgram(ActionEvent actionEvent) {
+    public void handleRunAnotherProgram() {
         this.parentStage.setScene(this.selectProgramsScene);
     }
 
-    public void handleRunOneStep(ActionEvent actionEvent) {
+    public void handleRunOneStep() {
+        List<ProgramState> programs = this.controller.removeCompletedPrograms(this.controller.getPrograms());
 
+        if(programs.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Program is done");
+            alert.showAndWait();
+            return;
+        }
+        this.controller.runGarbageCollector();
+        this.controller.oneStepForAllPrograms(programs);
+        this.update();
+        programs = this.controller.removeCompletedPrograms(programs);
+
+        if(programs.isEmpty()){
+            this.controller.getExecutorService().shutdownNow();
+            this.controller.setRepositoryPrograms(programs);
+
+            /*
+            this.executionStackListView.getItems().clear();
+            this.outListView.getItems().clear();
+            this.symbolsTableView.getItems().clear();
+            this.heapTableView.getItems().clear();
+            this.fileTableListView.getItems().clear();
+             */
+            this.programIdsListView.getItems().clear();
+            this.setNumberOfProgramStatesLabel();
+        }
     }
 
-    public void handleSelectProgram(MouseEvent mouseEvent) {
+    public void handleSelectProgram() {
+        this.update();
     }
 }

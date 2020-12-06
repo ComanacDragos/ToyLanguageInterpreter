@@ -1,6 +1,7 @@
 package View.GUI.GUIController;
 
 import Controller.Controller;
+import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Expressions.BinaryExpressions.ArithmeticExpression;
 import Model.Expressions.BinaryExpressions.LogicExpression;
@@ -34,6 +35,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
@@ -42,6 +44,7 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ControllerSelectProgram {
@@ -74,6 +77,17 @@ public class ControllerSelectProgram {
                 String key =  this.programsListView.getSelectionModel().getSelectedItem();
                 IStatement statement = this.programsDescriptions.get(key.substring(key.indexOf(' ') + 1));
 
+                try{
+                    statement.typeCheck(new MyDictionary<>());
+                }
+                catch (MyException exception){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Type check error");
+                    alert.setContentText(exception.getMessage());
+                    alert.showAndWait();
+                    return;
+                }
+
                 MyIStack<IStatement> executionStack = new MyStack<>();
                 executionStack.push(statement);
                 MyIDictionary<String, IValue> symbolsTable = new MyDictionary<>();
@@ -86,7 +100,6 @@ public class ControllerSelectProgram {
                 IRepository repository = new Repository("src/Files/log" + (this.programsListView.getSelectionModel().getSelectedIndices().get(0) + 1) + ".txt");
                 Controller interpreterController = new Controller(repository);
                 interpreterController.addProgramState(newProgram);
-
 
                 Parent root;
                 FXMLLoader runProgramLoader = new FXMLLoader();
