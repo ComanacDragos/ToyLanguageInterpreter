@@ -102,7 +102,7 @@ public class Controller {
 
         List<ProgramState> newProgramsList = new LinkedList<>();
         try {
-            //String exceptions = "";
+            List<String> exceptions = new LinkedList<>();
             newProgramsList = this.executorService.invokeAll(callables).stream()
                     .map(future ->{
                         ProgramState toReturn = null;
@@ -110,14 +110,20 @@ public class Controller {
                             toReturn = future.get();
                         }
                         catch (MyException | InterruptedException | ExecutionException exception){
-                            System.out.println(exception.getMessage());
-                            System.exit(1);
-                            //exceptions += exception.getMessage() + "\n";
+                            //System.out.println(exception.getMessage());
+                            //System.exit(1);
+                            exceptions.add(exception.getMessage() + "\n");
                         }
                         return toReturn;
                     })
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
+
+            if(!exceptions.isEmpty()) {
+                throw new MyException(
+                        String.join("\n", exceptions)
+                );
+            }
         }
         catch (InterruptedException exception){
             System.out.println(exception.getMessage());

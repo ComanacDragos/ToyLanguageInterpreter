@@ -14,10 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
@@ -193,21 +190,27 @@ public class ControllerRunProgram {
             return;
         }
         this.controller.runGarbageCollector();
-        this.controller.oneStepForAllPrograms(programs);
+
+        try{
+            this.controller.oneStepForAllPrograms(programs);
+        }
+        catch (MyException exception){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(exception.getMessage());
+            alert.showAndWait();
+
+            this.controller.getExecutorService().shutdownNow();
+            this.controller.setRepositoryPrograms(new LinkedList<>());
+            this.programIdsListView.getItems().clear();
+            this.setNumberOfProgramStatesLabel();
+            return;
+        }
         this.update();
         programs = this.controller.removeCompletedPrograms(programs);
 
         if(programs.isEmpty()){
             this.controller.getExecutorService().shutdownNow();
             this.controller.setRepositoryPrograms(programs);
-
-            /*
-            this.executionStackListView.getItems().clear();
-            this.outListView.getItems().clear();
-            this.symbolsTableView.getItems().clear();
-            this.heapTableView.getItems().clear();
-            this.fileTableListView.getItems().clear();
-             */
             this.programIdsListView.getItems().clear();
             this.setNumberOfProgramStatesLabel();
         }
