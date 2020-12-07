@@ -5,12 +5,16 @@ import Exceptions.MyException;
 import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
+import Observer.MyObserver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -18,7 +22,13 @@ import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-public class ControllerRunProgram {
+public class ControllerRunProgram extends MyObserver {
+    @FXML
+    Button runOneStepButton;
+    @FXML
+    Button runAnotherProgramButton;
+    @FXML
+    Button openNewWindowButton;
     @FXML
     TableColumn<Pair<Integer, IValue>, Integer> heapAddressColumn;
     @FXML
@@ -72,7 +82,7 @@ public class ControllerRunProgram {
         this.controller.setExecutorService(Executors.newFixedThreadPool(2));
     }
 
-    void update(){
+    public void update(){
         try {
             this.setNumberOfProgramStatesLabel();
             this.setProgramIdsListView();
@@ -192,6 +202,7 @@ public class ControllerRunProgram {
     }
 
     public void handleRunAnotherProgram() {
+        this.closeProgram();
         this.parentStage.setScene(this.selectProgramsScene);
     }
 
@@ -210,28 +221,65 @@ public class ControllerRunProgram {
             this.controller.oneStepForAllPrograms(programs);
         }
         catch (MyException exception){
+            this.closeProgram();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(exception.getMessage());
             alert.showAndWait();
-
-            this.controller.getExecutorService().shutdownNow();
-            this.controller.setRepositoryPrograms(new LinkedList<>());
-            this.programIdsListView.getItems().clear();
-            this.setNumberOfProgramStatesLabel();
             return;
         }
-        this.update();
+        //this.update();
         programs = this.controller.removeCompletedPrograms(programs);
 
         if(programs.isEmpty()){
-            this.controller.getExecutorService().shutdownNow();
-            this.controller.setRepositoryPrograms(programs);
-            this.programIdsListView.getItems().clear();
-            this.setNumberOfProgramStatesLabel();
+            this.closeProgram();
         }
+    }
+
+    void closeProgram(){
+        this.controller.getExecutorService().shutdownNow();
+        this.controller.setRepositoryPrograms(new LinkedList<>());
+        this.programIdsListView.getItems().clear();
+        this.setNumberOfProgramStatesLabel();
     }
 
     public void handleSelectProgram() {
         this.update();
+    }
+
+    public void handleOpenNewWindow() {
+        try{
+            Parent root;
+            FXMLLoader runProgramLoader = new FXMLLoader();
+            runProgramLoader.setLocation(getClass().getResource("../FXML/RunProgram.fxml"));
+            root = runProgramLoader.load();
+
+            ControllerRunProgram newController = runProgramLoader.getController();
+
+            Stage newStage = new Stage();
+            Scene scene = new Scene(root, 1024, 720);
+
+            newController.setParentStage(newStage);
+            newController.setController(this.controller);
+
+            GridPane gridPane = (GridPane) root;
+
+            gridPane.getChildren().stream()
+            .filter(node ->
+                    Objects.nonNull(node.getId())
+                    && (node.getId().equals("runAnotherProgramButton")
+                    || node.getId().equals("openNewWindowButton")))
+            .collect(Collectors.toList())
+            .forEach(gridPane.getChildren()::remove);
+
+            this.controller.addObserver(newController);
+            this.controller.notyfiObservers();
+
+            newStage.setScene(scene);
+            newStage.show();
+        }
+        catch (Exception exc){
+            exc.printStackTrace();
+            System.exit(1);
+        }
     }
 }

@@ -6,6 +6,7 @@ import Model.ProgramState;
 import Model.Values.IValue;
 import Model.Values.ReferenceValue;
 import Repository.IRepository;
+import Observer.MyObservable;
 
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -14,7 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-public class Controller {
+public class Controller extends MyObservable {
     IRepository repository;
     ExecutorService executorService;
 
@@ -135,6 +136,8 @@ public class Controller {
         programStates.forEach(program -> this.repository.logProgramStateExec(program));
 
         this.repository.setPrograms(programStates);
+
+        this.notyfiObservers();
     }
 
     public void executeAllSteps() throws MyException {
@@ -168,6 +171,8 @@ public class Controller {
                         heap.getContent()
                 )
         );
+
+        this.notyfiObservers();
     }
 
     public void emptyLogFile(){

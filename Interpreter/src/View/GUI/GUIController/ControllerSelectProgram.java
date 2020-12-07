@@ -111,9 +111,15 @@ public class ControllerSelectProgram {
                 controller.setParentStage(this.parentStage);
                 controller.setSelectProgramsScene(this.parentStage.getScene());
                 controller.setController(interpreterController);
-                controller.update();
+                //controller.update();
 
-                this.parentStage.setScene(new Scene(root, 870, 720));
+                interpreterController.addObserver(controller);
+                interpreterController.notyfiObservers();
+
+                Scene scene = new Scene(root, 1024, 720);
+                //scene.getStylesheets().add(getClass().getResource("../CSS/main.css").toExternalForm());
+
+                this.parentStage.setScene(scene);
                 this.parentStage.show();
             }
             catch (Exception exc){

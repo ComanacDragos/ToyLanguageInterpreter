@@ -1,4 +1,4 @@
-Program: 3
+Program: 1
 Execution stack
 (
 bool a;
@@ -14,25 +14,7 @@ Heap
 
 
 
-Program: 3
-Execution stack
-(
-bool a;
-int v;
-a = true;
-)
-(
-IF (a) THEN (v = 2;) ELSE (v = 3;));
-print(v);
-)
-Symbols table
-Out
-File table
-Heap
-
-
-
-Program: 3
+Program: 1
 Execution stack
 (
 bool a;
@@ -50,13 +32,11 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 bool a;
 int v;
-)
-(
 a = true;
 )
 (
@@ -70,7 +50,7 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 bool a;
@@ -90,12 +70,10 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 bool a;
-)
-(
 int v;
 )
 (
@@ -112,7 +90,7 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 bool a;
@@ -134,7 +112,29 @@ Heap
 
 
 
-Program: 3
+Program: 1
+Execution stack
+(
+bool a;
+)
+(
+int v;
+)
+(
+a = true;
+)
+(
+IF (a) THEN (v = 2;) ELSE (v = 3;));
+print(v);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
 Execution stack
 (
 int v;
@@ -154,7 +154,7 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 int v;
@@ -174,7 +174,7 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 a = true;
@@ -192,7 +192,7 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 a = true;
@@ -210,7 +210,7 @@ Heap
 
 
 
-Program: 3
+Program: 1
 Execution stack
 (
 IF (a) THEN (v = 2;) ELSE (v = 3;));
@@ -220,129 +220,6 @@ Symbols table
 a -> true
 v -> 0
 Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-(
-IF (a) THEN (v = 2;) ELSE (v = 3;));
-print(v);
-)
-Symbols table
-a -> true
-v -> 0
-Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-(
-IF (a) THEN (v = 2;) ELSE (v = 3;));
-)
-(
-print(v);
-)
-Symbols table
-a -> true
-v -> 0
-Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-(
-IF (a) THEN (v = 2;) ELSE (v = 3;));
-)
-(
-print(v);
-)
-Symbols table
-a -> true
-v -> 0
-Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-(
-v = 2;
-)
-(
-print(v);
-)
-Symbols table
-a -> true
-v -> 0
-Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-(
-v = 2;
-)
-(
-print(v);
-)
-Symbols table
-a -> true
-v -> 0
-Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-(
-print(v);
-)
-Symbols table
-a -> true
-v -> 2
-Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-(
-print(v);
-)
-Symbols table
-a -> true
-v -> 2
-Out
-File table
-Heap
-
-
-
-Program: 3
-Execution stack
-Symbols table
-a -> true
-v -> 2
-Out
-2
 File table
 Heap
 
