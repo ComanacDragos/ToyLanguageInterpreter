@@ -247,6 +247,12 @@ public class ControllerRunProgram extends MyObserver {
     }
 
     public void handleOpenNewWindow() {
+        if(this.controller.getPrograms().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Program is done");
+            alert.showAndWait();
+            return;
+        }
         try{
             Parent root;
             FXMLLoader runProgramLoader = new FXMLLoader();
