@@ -44,7 +44,6 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ControllerSelectProgram {

@@ -86,11 +86,14 @@ public class ControllerRunProgram extends MyObserver {
         try {
             this.setNumberOfProgramStatesLabel();
             this.setProgramIdsListView();
-            this.setExecutionStackListView();
-            this.setSymbolsTableView();
-            this.setHeapTableView();
-            this.setFileTableListView();
-            this.setOutListView();
+
+            if(!this.controller.getPrograms().isEmpty()) {
+                this.setExecutionStackListView();
+                this.setSymbolsTableView();
+                this.setHeapTableView();
+                this.setFileTableListView();
+                this.setOutListView();
+            }
         }
         catch (MyException exception){
             Alert alert = new Alert(Alert.AlertType.ERROR);

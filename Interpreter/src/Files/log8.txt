@@ -1,4 +1,4 @@
-Program: 8
+Program: 11
 Execution stack
 (
 int a;
@@ -17,28 +17,7 @@ Heap
 
 
 
-Program: 8
-Execution stack
-(
-int a;
-int b;
-a = 5;
-b = 10;
-)
-(
-print(a != b);
-print(a < b);
-print(a == b);
-print(a >= b);
-)
-Symbols table
-Out
-File table
-Heap
-
-
-
-Program: 8
+Program: 11
 Execution stack
 (
 int a;
@@ -59,13 +38,11 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 int a;
 int b;
-)
-(
 a = 5;
 b = 10;
 )
@@ -82,7 +59,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 int a;
@@ -105,12 +82,10 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 int a;
-)
-(
 int b;
 )
 (
@@ -130,7 +105,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 int a;
@@ -155,7 +130,32 @@ Heap
 
 
 
-Program: 8
+Program: 11
+Execution stack
+(
+int a;
+)
+(
+int b;
+)
+(
+a = 5;
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 11
 Execution stack
 (
 int b;
@@ -178,7 +178,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 int b;
@@ -201,7 +201,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 a = 5;
@@ -222,7 +222,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 a = 5;
@@ -243,30 +243,7 @@ Heap
 
 
 
-Program: 8
-Execution stack
-(
-a = 5;
-)
-(
-b = 10;
-)
-(
-print(a != b);
-print(a < b);
-print(a == b);
-print(a >= b);
-)
-Symbols table
-a -> 0
-b -> 0
-Out
-File table
-Heap
-
-
-
-Program: 8
+Program: 11
 Execution stack
 (
 a = 5;
@@ -289,7 +266,30 @@ Heap
 
 
 
-Program: 8
+Program: 11
+Execution stack
+(
+a = 5;
+)
+(
+b = 10;
+)
+(
+print(a != b);
+print(a < b);
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 0
+b -> 0
+Out
+File table
+Heap
+
+
+
+Program: 11
 Execution stack
 (
 b = 10;
@@ -309,7 +309,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 b = 10;
@@ -329,7 +329,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a != b);
@@ -346,7 +346,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a != b);
@@ -363,26 +363,7 @@ Heap
 
 
 
-Program: 8
-Execution stack
-(
-print(a != b);
-print(a < b);
-)
-(
-print(a == b);
-print(a >= b);
-)
-Symbols table
-a -> 5
-b -> 10
-Out
-File table
-Heap
-
-
-
-Program: 8
+Program: 11
 Execution stack
 (
 print(a != b);
@@ -401,12 +382,10 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a != b);
-)
-(
 print(a < b);
 )
 (
@@ -422,7 +401,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a != b);
@@ -443,7 +422,28 @@ Heap
 
 
 
-Program: 8
+Program: 11
+Execution stack
+(
+print(a != b);
+)
+(
+print(a < b);
+)
+(
+print(a == b);
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+File table
+Heap
+
+
+
+Program: 11
 Execution stack
 (
 print(a < b);
@@ -462,7 +462,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a < b);
@@ -481,7 +481,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a == b);
@@ -498,7 +498,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a == b);
@@ -515,26 +515,7 @@ Heap
 
 
 
-Program: 8
-Execution stack
-(
-print(a == b);
-)
-(
-print(a >= b);
-)
-Symbols table
-a -> 5
-b -> 10
-Out
-true
-true
-File table
-Heap
-
-
-
-Program: 8
+Program: 11
 Execution stack
 (
 print(a == b);
@@ -553,7 +534,26 @@ Heap
 
 
 
-Program: 8
+Program: 11
+Execution stack
+(
+print(a == b);
+)
+(
+print(a >= b);
+)
+Symbols table
+a -> 5
+b -> 10
+Out
+true
+true
+File table
+Heap
+
+
+
+Program: 11
 Execution stack
 (
 print(a >= b);
@@ -570,7 +570,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 (
 print(a >= b);
@@ -587,7 +587,7 @@ Heap
 
 
 
-Program: 8
+Program: 11
 Execution stack
 Symbols table
 a -> 5

@@ -1,4 +1,4 @@
-Program: 3
+Program: 8
 Execution stack
 (
 ref(int) v;
@@ -15,26 +15,7 @@ Heap
 
 
 
-Program: 3
-Execution stack
-(
-ref(int) v;
-new(v, 20);
-ref(ref(int)) a;
-new(a, v);
-)
-(
-print(v);
-print(a);
-)
-Symbols table
-Out
-File table
-Heap
-
-
-
-Program: 3
+Program: 8
 Execution stack
 (
 ref(int) v;
@@ -53,13 +34,11 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 ref(int) v;
 new(v, 20);
-)
-(
 ref(ref(int)) a;
 new(a, v);
 )
@@ -74,7 +53,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 ref(int) v;
@@ -95,12 +74,10 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 ref(int) v;
-)
-(
 new(v, 20);
 )
 (
@@ -118,7 +95,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 ref(int) v;
@@ -141,7 +118,30 @@ Heap
 
 
 
-Program: 3
+Program: 8
+Execution stack
+(
+ref(int) v;
+)
+(
+new(v, 20);
+)
+(
+ref(ref(int)) a;
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 8
 Execution stack
 (
 new(v, 20);
@@ -162,7 +162,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 new(v, 20);
@@ -183,7 +183,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 ref(ref(int)) a;
@@ -202,7 +202,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 ref(ref(int)) a;
@@ -221,28 +221,7 @@ Heap
 
 
 
-Program: 3
-Execution stack
-(
-ref(ref(int)) a;
-)
-(
-new(a, v);
-)
-(
-print(v);
-print(a);
-)
-Symbols table
-v -> (1, int)
-Out
-File table
-Heap
-1 -> 20
-
-
-
-Program: 3
+Program: 8
 Execution stack
 (
 ref(ref(int)) a;
@@ -263,7 +242,28 @@ Heap
 
 
 
-Program: 3
+Program: 8
+Execution stack
+(
+ref(ref(int)) a;
+)
+(
+new(a, v);
+)
+(
+print(v);
+print(a);
+)
+Symbols table
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+
+
+
+Program: 8
 Execution stack
 (
 new(a, v);
@@ -282,7 +282,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 new(a, v);
@@ -301,7 +301,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 print(v);
@@ -318,7 +318,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 print(v);
@@ -335,26 +335,7 @@ Heap
 
 
 
-Program: 3
-Execution stack
-(
-print(v);
-)
-(
-print(a);
-)
-Symbols table
-a -> (2, ref(int))
-v -> (1, int)
-Out
-File table
-Heap
-1 -> 20
-2 -> (1, int)
-
-
-
-Program: 3
+Program: 8
 Execution stack
 (
 print(v);
@@ -373,7 +354,26 @@ Heap
 
 
 
-Program: 3
+Program: 8
+Execution stack
+(
+print(v);
+)
+(
+print(a);
+)
+Symbols table
+a -> (2, ref(int))
+v -> (1, int)
+Out
+File table
+Heap
+1 -> 20
+2 -> (1, int)
+
+
+
+Program: 8
 Execution stack
 (
 print(a);
@@ -390,7 +390,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 (
 print(a);
@@ -407,7 +407,7 @@ Heap
 
 
 
-Program: 3
+Program: 8
 Execution stack
 Symbols table
 a -> (2, ref(int))

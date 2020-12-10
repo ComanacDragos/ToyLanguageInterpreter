@@ -33,6 +33,7 @@ public class Controller extends MyObservable {
 
     public void setRepositoryPrograms(List<ProgramState> programs){
         this.repository.setPrograms(programs);
+        this.notyfiObservers();
     }
 
     public void setRepository(IRepository repository) {
