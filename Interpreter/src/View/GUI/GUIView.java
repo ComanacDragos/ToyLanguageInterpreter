@@ -21,6 +21,7 @@ public class GUIView extends Application {
         Scene scene = new Scene(root, 1024, 720);
         //scene.getStylesheets().add(getClass().getResource("CSS/main.css").toExternalForm());
 
+        primaryStage.setOnCloseRequest(e -> System.exit(0));
         primaryStage.setTitle("Interpreter");
         primaryStage.setScene(scene);
         primaryStage.show();

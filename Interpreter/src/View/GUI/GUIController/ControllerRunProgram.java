@@ -66,6 +66,9 @@ public class ControllerRunProgram extends MyObserver {
 
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
+
+        this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     public void setParentStage(Stage parentStage) {
