@@ -33,6 +33,7 @@ public class ForkStatement implements IStatement {
                 state.getOut(),
                 state.getFileTable(),
                 state.getHeap(),
+                state.getLockTable(),
                 statement.deepCopy()
         );
     }
@@ -50,6 +51,6 @@ public class ForkStatement implements IStatement {
 
     @Override
     public String toString() {
-        return "fork(\n" + this.statement.toString() + "\n)";
+        return "fork(\n" + this.statement.toString() + "\n);";
     }
 }

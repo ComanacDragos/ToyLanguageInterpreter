@@ -18,16 +18,18 @@ public class ProgramState {
     IStatement originalProgram;
     MyIDictionary<String, BufferedReader> fileTable;
     MyHeap heap;
+    MyIDictionary<String, Boolean> lockTable;
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyIDictionary<String, Boolean> lockTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
         this.originalProgram = originalProgram;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.lockTable = lockTable;
         this.programId = ProgramState.currentId.incrementAndGet();
     }
 
@@ -79,6 +81,14 @@ public class ProgramState {
         this.heap = heap;
     }
 
+    public MyIDictionary<String, Boolean> getLockTable() {
+        return lockTable;
+    }
+
+    public void setLockTable(MyIDictionary<String, Boolean> lockTable) {
+        this.lockTable = lockTable;
+    }
+
     public Integer getProgramId() {
         return programId;
     }
@@ -127,6 +137,17 @@ public class ProgramState {
         return newHeap;
     }
 
+    public MyIDictionary<String, Boolean> lockTableDeepCopy(){
+        MyIDictionary<String, Boolean> newLockTable = new MyDictionary<>();
+
+        this.lockTable.stream().forEach(
+                e -> newLockTable.put(e.getKey(), e.getValue())
+        );
+
+        return newLockTable;
+
+    }
+
     public ProgramState deepCopy(){
 
         return new ProgramState(this.executionStackDeepCopy(),
@@ -134,6 +155,7 @@ public class ProgramState {
                                 this.outDeepCopy(),
                                 this.fileTableDeepCopy(),
                                 this.heapDeepCopy(),
+                                this.lockTableDeepCopy(),
                                 this.originalProgram.deepCopy());
     }
 
@@ -154,7 +176,8 @@ public class ProgramState {
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +
-                "Heap\n" + this.heap.toString()
+                "Heap\n" + this.heap.toString() +
+                "Lock table\n" + this.lockTable.toString()
                 +"\n\n";
     }
 }

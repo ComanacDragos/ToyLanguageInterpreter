@@ -6,6 +6,7 @@ import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
 import Observer.MyObserver;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
 
 public class ControllerRunProgram extends MyObserver {
     @FXML
+    TableView<Pair<String, Boolean>> lockTableView;
+    @FXML
     Button runOneStepButton;
     @FXML
     Button runAnotherProgramButton;
@@ -37,6 +40,10 @@ public class ControllerRunProgram extends MyObserver {
     TableColumn<Pair<String, IValue>, String> symbolsTableNameColumn;
     @FXML
     TableColumn<Pair<String, IValue>, IValue> symbolsTableValueColumn;
+    @FXML
+    TableColumn<Pair<String, Boolean>, String> lockTableNameColumn;
+    @FXML
+    TableColumn<Pair<String, Boolean>, Boolean> lockTableIsAcquiredColumn;
     @FXML
     Label numberOfProgramStatesLabel;
     @FXML
@@ -67,8 +74,12 @@ public class ControllerRunProgram extends MyObserver {
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        this.lockTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
+        this.lockTableIsAcquiredColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
+
         this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        this.lockTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     public void setParentStage(Stage parentStage) {
@@ -96,6 +107,7 @@ public class ControllerRunProgram extends MyObserver {
                 this.setHeapTableView();
                 this.setFileTableListView();
                 this.setOutListView();
+                this.setLockTableView();
             }
         }
         catch (MyException exception){
@@ -191,6 +203,20 @@ public class ControllerRunProgram extends MyObserver {
         );
 
         this.outListView.setItems(out);
+    }
+
+    void setLockTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<Pair<String, Boolean>> locks = FXCollections.observableArrayList();
+
+        locks.addAll(
+                program.getLockTable().stream()
+                .map(e -> new Pair<String, Boolean>(e.getKey(), e.getValue()))
+                .collect(Collectors.toList())
+        );
+
+        this.lockTableView.setItems(locks);
     }
 
     ProgramState getSelectedProgram() throws MyException{

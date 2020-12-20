@@ -19,6 +19,9 @@ import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
 import Model.Statements.HeapStatements.NewStatement;
 import Model.Statements.HeapStatements.WriteHeapStatement;
+import Model.Statements.LockStatements.AcquireLockStatement;
+import Model.Statements.LockStatements.CreateLockStatement;
+import Model.Statements.LockStatements.ReleaseLockStatement;
 import Model.Types.BoolType;
 import Model.Types.IntType;
 import Model.Types.ReferenceType;
@@ -64,7 +67,7 @@ public class ControllerSelectProgram {
         ObservableList<String> programs = FXCollections.observableArrayList();
 
         AtomicInteger currentIndex = new AtomicInteger(1);
-        this.programsDescriptions.forEach((key, value) -> programs.add((currentIndex.getAndIncrement()) + ". " + key));
+        this.programsDescriptions.forEach((key, value) -> programs.add((currentIndex.getAndIncrement()) + ". " + key.replaceAll(";", ";\n")));
 
         this.programsListView.setItems(programs);
         this.programsListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -74,7 +77,7 @@ public class ControllerSelectProgram {
         if(mouseEvent.getClickCount() == 2){
             try{
                 String key =  this.programsListView.getSelectionModel().getSelectedItem();
-                IStatement statement = this.programsDescriptions.get(key.substring(key.indexOf(' ') + 1));
+                IStatement statement = this.programsDescriptions.get(key.substring(key.indexOf(' ') + 1).replaceAll("\n", ""));
 
                 try{
                     statement.typeCheck(new MyDictionary<>());
@@ -93,8 +96,9 @@ public class ControllerSelectProgram {
                 MyIList<IValue> out = new MyList<>();
                 MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                 MyHeap heap = new MyHeap();
+                MyIDictionary<String, Boolean> lockTable = new MyDictionary<>();
 
-                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, lockTable, statement);
 
                 IRepository repository = new Repository("src/Files/log" + (this.programsListView.getSelectionModel().getSelectedIndices().get(0) + 1) + ".txt");
                 Controller interpreterController = new Controller(repository);
@@ -115,7 +119,7 @@ public class ControllerSelectProgram {
                 interpreterController.addObserver(controller);
                 interpreterController.notyfiObservers();
 
-                Scene scene = new Scene(root, 1024, 720);
+                Scene scene = new Scene(root, 970, 1024);
                 //scene.getStylesheets().add(getClass().getResource("../CSS/main.css").toExternalForm());
 
                 this.parentStage.setScene(scene);
@@ -879,6 +883,129 @@ public class ControllerSelectProgram {
                 "print(a);" +
                 "print(b);",
                 ex18
+        );
+
+        IStatement ex19 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                            new VariableDeclarationStatement(
+                                "v",
+                                new IntType()
+                            ),
+                            new VariableDeclarationStatement(
+                                "a",
+                                new ReferenceType(
+                                        new IntType()
+                                )
+                            )
+                        ),
+                        new CompoundStatement(
+                            new AssignStatement(
+                                    "v",
+                                    new ValueExpression(
+                                            new IntValue(10)
+                                    )
+                            ),
+                            new NewStatement(
+                                "a",
+                                new ValueExpression(
+                                        new IntValue(22)
+                                )
+                            )
+                        )
+                ),
+                new CompoundStatement(
+                        new CompoundStatement(
+                            new CreateLockStatement("myLock"),
+                            new ForkStatement(
+                                    new CompoundStatement(
+                                            new CompoundStatement(
+                                                    new AssignStatement(
+                                                            "v",
+                                                            new ArithmeticExpression(
+                                                                    new VariableExpression("v"),
+                                                                    new ValueExpression(
+                                                                            new IntValue(1)
+                                                                    ),
+                                                                    ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                            )
+                                                    ),
+                                                    new AcquireLockStatement("myLock")
+                                            ),
+                                            new CompoundStatement(
+                                                    new WriteHeapStatement(
+                                                            "a",
+                                                            new ValueExpression(
+                                                                    new IntValue(30)
+                                                            )
+                                                    ),
+                                                    new ReleaseLockStatement("myLock")
+                                            )
+                                    )
+                            )
+                        ),
+                        new CompoundStatement(
+                                new CompoundStatement(
+                                    new CompoundStatement(
+                                        new AcquireLockStatement("myLock"),
+                                        new WriteHeapStatement(
+                                                "a",
+                                                new ValueExpression(
+                                                        new IntValue(30)
+                                                )
+                                        )
+                                    ),
+                                    new CompoundStatement(
+                                            new PrintStatement(
+                                                    new ReadHeapExpression(
+                                                            new VariableExpression("a")
+                                                    )
+                                            ),
+                                            new ReleaseLockStatement("myLock")
+                                    )
+                                ),
+                                new CompoundStatement(
+                                    new CompoundStatement(
+                                        new PrintStatement(
+                                                new VariableExpression("v")
+                                        ),
+                                        new AcquireLockStatement("myLock")
+                                    ),
+                                    new CompoundStatement(
+                                        new PrintStatement(
+                                                new ReadHeapExpression(
+                                                        new VariableExpression("a")
+                                                )
+                                        ),
+                                        new ReleaseLockStatement("myLock")
+                                    )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "int v;" +
+                "ref int a;" +
+                "v=10;" +
+                "new(a,22);" +
+                "createLock(myLock);" +
+                "fork(" +
+                        "v=v+1;" +
+                        "acquireLock(myLock);" +
+                        "wH(a,30);" +
+                        "releaseLock(myLock)" +
+                ");" +
+                "acquireLock(myLock);" +
+                "wH(a,30);" +
+                "print(rH(a));" +
+                "releaseLock(myLock)" +
+                "print(v);" +
+                "acquireLock(myLock);" +
+                "print(rH(a));" +
+                "releaseLock(myLock);"
+                ,
+                ex19
         );
     }
 }

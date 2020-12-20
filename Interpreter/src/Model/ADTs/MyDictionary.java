@@ -26,11 +26,13 @@ public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value>{
 
     @Override
     public Value lookup(Key key) {
-        Value value = this.dictionary.get(key);
-        if(Objects.nonNull(value)){
-            return value;
+        synchronized (this.dictionary){
+            Value value = this.dictionary.get(key);
+            if(Objects.nonNull(value)){
+                return value;
+            }
+            throw new MyException(key + " is not a key");
         }
-        throw new MyException(key + " is not a key");
     }
 
     @Override

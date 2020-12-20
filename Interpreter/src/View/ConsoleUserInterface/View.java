@@ -802,8 +802,9 @@ public class View {
                     MyIList<IValue> out = new MyList<>();
                     MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                     MyHeap heap = new MyHeap();
+                    MyIDictionary<String, Boolean> lockTable = new MyDictionary<>();
 
-                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, lockTable, statement);
 
                     IRepository repository = new Repository("src/Files/log" + currentKey + ".txt");
                     Controller controller = new Controller(repository);

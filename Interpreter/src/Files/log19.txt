@@ -1,0 +1,2048 @@
+Program: 1
+Execution stack
+(
+int v;
+ref(int) a;
+v = 10;
+new(a, 22);
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+ref(int) a;
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+ref(int) a;
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+ref(int) a;
+)
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+ref(int) a;
+)
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+ref(int) a;
+)
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+ref(int) a;
+)
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+)
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) a;
+)
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (0, int)
+v -> 0
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+v = 10;
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (0, int)
+v -> 0
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+v = 10;
+)
+(
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (0, int)
+v -> 0
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+v = 10;
+)
+(
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (0, int)
+v -> 0
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (0, int)
+v -> 10
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+new(a, 22);
+)
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (0, int)
+v -> 10
+Out
+File table
+Heap
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+)
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+createLock(myLock);
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+)
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+createLock(myLock);
+)
+(
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+)
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+createLock(myLock);
+)
+(
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+)
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+)
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+);
+)
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+v = (v + 1);
+acquireLock(myLock);
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+v = (v + 1);
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+v = (v + 1);
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+v = (v + 1);
+)
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+v = (v + 1);
+)
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 2
+Execution stack
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 2
+Execution stack
+(
+writeHeap(a, 30);
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 2
+Execution stack
+(
+writeHeap(a, 30);
+)
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 2
+Execution stack
+(
+writeHeap(a, 30);
+)
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 22
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 2
+Execution stack
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 2
+Execution stack
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 2
+Execution stack
+Symbols table
+a -> (1, int)
+v -> 11
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+writeHeap(a, 30);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+)
+(
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+)
+(
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+releaseLock(myLock);
+)
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+acquireLock(myLock);
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+acquireLock(myLock);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+acquireLock(myLock);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+(
+acquireLock(myLock);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+print(v);
+)
+(
+acquireLock(myLock);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+acquireLock(myLock);
+)
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+)
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+print(readHeap(a));
+)
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+(
+releaseLock(myLock);
+)
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> true
+
+
+
+Program: 1
+Execution stack
+Symbols table
+a -> (1, int)
+v -> 10
+Out
+30
+10
+30
+File table
+Heap
+1 -> 30
+Lock table
+myLock -> false
+
+
+
