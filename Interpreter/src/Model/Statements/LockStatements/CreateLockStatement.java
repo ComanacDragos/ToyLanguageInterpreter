@@ -2,6 +2,7 @@ package Model.Statements.LockStatements;
 
 import Exceptions.MyException;
 import Model.ADTs.MyIDictionary;
+import Model.ADTs.MyLockTable;
 import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Types.IType;
@@ -23,7 +24,7 @@ public class CreateLockStatement implements IStatement {
 
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
-        MyIDictionary<String, Boolean> lockTable = state.getLockTable();
+        MyLockTable lockTable = state.getLockTable();
         if(lockTable.isDefined(this.lockName))
             throw new MyException("Lock already defined");
         lockTable.put(this.lockName, Boolean.FALSE);

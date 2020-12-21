@@ -18,11 +18,11 @@ public class ProgramState {
     IStatement originalProgram;
     MyIDictionary<String, BufferedReader> fileTable;
     MyHeap heap;
-    MyIDictionary<String, Boolean> lockTable;
+    MyLockTable lockTable;
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyIDictionary<String, Boolean> lockTable, IStatement originalProgram){
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyLockTable lockTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
@@ -81,11 +81,11 @@ public class ProgramState {
         this.heap = heap;
     }
 
-    public MyIDictionary<String, Boolean> getLockTable() {
+    public MyLockTable getLockTable() {
         return lockTable;
     }
 
-    public void setLockTable(MyIDictionary<String, Boolean> lockTable) {
+    public void setLockTable(MyLockTable lockTable) {
         this.lockTable = lockTable;
     }
 
@@ -137,8 +137,8 @@ public class ProgramState {
         return newHeap;
     }
 
-    public MyIDictionary<String, Boolean> lockTableDeepCopy(){
-        MyIDictionary<String, Boolean> newLockTable = new MyDictionary<>();
+    public MyLockTable lockTableDeepCopy(){
+        MyLockTable newLockTable = new MyLockTable();
 
         this.lockTable.stream().forEach(
                 e -> newLockTable.put(e.getKey(), e.getValue())

@@ -96,7 +96,7 @@ public class ControllerSelectProgram {
                 MyIList<IValue> out = new MyList<>();
                 MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                 MyHeap heap = new MyHeap();
-                MyIDictionary<String, Boolean> lockTable = new MyDictionary<>();
+                MyLockTable lockTable = new MyLockTable();
 
                 ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, lockTable, statement);
 
@@ -119,7 +119,7 @@ public class ControllerSelectProgram {
                 interpreterController.addObserver(controller);
                 interpreterController.notyfiObservers();
 
-                Scene scene = new Scene(root, 970, 1024);
+                Scene scene = new Scene(root, 1024, 900);
                 //scene.getStylesheets().add(getClass().getResource("../CSS/main.css").toExternalForm());
 
                 this.parentStage.setScene(scene);
@@ -1006,6 +1006,143 @@ public class ControllerSelectProgram {
                 "releaseLock(myLock);"
                 ,
                 ex19
+        );
+
+
+        IStatement ex20 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "v",
+                                        new IntType()
+                                ),
+                                new VariableDeclarationStatement(
+                                        "a",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new AssignStatement(
+                                        "v",
+                                        new ValueExpression(
+                                                new IntValue(10)
+                                        )
+                                ),
+                                new NewStatement(
+                                        "a",
+                                        new ValueExpression(
+                                                new IntValue(22)
+                                        )
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new CreateLockStatement("myLock"),
+                                new ForkStatement(
+                                        new CompoundStatement(
+                                                new CompoundStatement(
+                                                        new CompoundStatement(
+                                                                new AssignStatement(
+                                                                        "v",
+                                                                        new ArithmeticExpression(
+                                                                                new VariableExpression("v"),
+                                                                                new ValueExpression(
+                                                                                        new IntValue(1)
+                                                                                ),
+                                                                                ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                                        )
+                                                                ),
+                                                                new AssignStatement(
+                                                                        "v",
+                                                                        new ArithmeticExpression(
+                                                                                new VariableExpression("v"),
+                                                                                new ValueExpression(
+                                                                                        new IntValue(1)
+                                                                                ),
+                                                                                ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                                        )
+                                                                )
+                                                        ),
+                                                        new AcquireLockStatement("myLock")
+                                                ),
+                                                new CompoundStatement(
+                                                        new WriteHeapStatement(
+                                                                "a",
+                                                                new ValueExpression(
+                                                                        new IntValue(30)
+                                                                )
+                                                        ),
+                                                        new ReleaseLockStatement("myLock")
+                                                )
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new CompoundStatement(
+                                        new CompoundStatement(
+                                                new AcquireLockStatement("myLock"),
+                                                new WriteHeapStatement(
+                                                        "a",
+                                                        new ValueExpression(
+                                                                new IntValue(30)
+                                                        )
+                                                )
+                                        ),
+                                        new CompoundStatement(
+                                                new PrintStatement(
+                                                        new ReadHeapExpression(
+                                                                new VariableExpression("a")
+                                                        )
+                                                ),
+                                                new ReleaseLockStatement("myLock")
+                                        )
+                                ),
+                                new CompoundStatement(
+                                        new CompoundStatement(
+                                                new PrintStatement(
+                                                        new VariableExpression("v")
+                                                ),
+                                                new AcquireLockStatement("myLock")
+                                        ),
+                                        new CompoundStatement(
+                                                new PrintStatement(
+                                                        new ReadHeapExpression(
+                                                                new VariableExpression("a")
+                                                        )
+                                                ),
+                                                new ReleaseLockStatement("myLock")
+                                        )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "int v;" +
+                "ref int a;" +
+                "v=10;" +
+                "new(a,22);" +
+                "createLock(myLock);" +
+                "fork(" +
+                "v=v+1;" +
+                "v=v+1;" +
+                "acquireLock(myLock);" +
+                "wH(a,30);" +
+                "releaseLock(myLock)" +
+                ");" +
+                "acquireLock(myLock);" +
+                "wH(a,30);" +
+                "print(rH(a));" +
+                "releaseLock(myLock)" +
+                "print(v);" +
+                "acquireLock(myLock);" +
+                "print(rH(a));" +
+                "releaseLock(myLock);"
+                ,
+                ex20
         );
     }
 }

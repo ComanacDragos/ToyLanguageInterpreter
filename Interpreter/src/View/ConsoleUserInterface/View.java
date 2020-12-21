@@ -802,7 +802,7 @@ public class View {
                     MyIList<IValue> out = new MyList<>();
                     MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                     MyHeap heap = new MyHeap();
-                    MyIDictionary<String, Boolean> lockTable = new MyDictionary<>();
+                    MyLockTable lockTable = new MyLockTable();
 
                     ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, lockTable, statement);
 
