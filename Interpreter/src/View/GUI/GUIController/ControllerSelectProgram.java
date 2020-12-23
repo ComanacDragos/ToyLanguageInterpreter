@@ -14,6 +14,7 @@ import Model.Statements.*;
 import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
+import Model.Statements.ExtraStatements.ForStatement;
 import Model.Statements.FileStatements.CloseReadFileStatement;
 import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
@@ -879,6 +880,166 @@ public class ControllerSelectProgram {
                 "print(a);" +
                 "print(b);",
                 ex18
+        );
+
+        IStatement ex19 = new CompoundStatement(
+                new CompoundStatement(
+                        new VariableDeclarationStatement(
+                                "n",
+                                new IntType()
+                        ),
+                        new AssignStatement(
+                                "n",
+                                new ValueExpression(
+                                        new IntValue(5)
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new ForStatement(
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement(
+                                                "i",
+                                                new IntType()
+                                        ),
+                                        new AssignStatement(
+                                                "i",
+                                                new ValueExpression(
+                                                        new IntValue(1)
+                                                )
+                                        )
+                                ),
+                                new RelationalExpression(
+                                        new VariableExpression("i"),
+                                        new VariableExpression("n"),
+                                        RelationalExpression.RelationalOperation.LESS_THAN_OR_EQUAL
+                                ),
+                                 new AssignStatement(
+                                         "i",
+                                         new ArithmeticExpression(
+                                                 new VariableExpression("i"),
+                                                 new ValueExpression(
+                                                         new IntValue(1)
+                                                 ),
+                                                 ArithmeticExpression.ArithmeticOperation.ADDITION
+                                         )
+                                 ),
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement(
+                                                "v",
+                                                new ReferenceType(
+                                                        new IntType()
+                                                )
+                                        ),
+                                        new CompoundStatement(
+                                                new NewStatement(
+                                                        "v",
+                                                        new VariableExpression("i")
+                                                ),
+                                                new PrintStatement(
+                                                        new ReadHeapExpression(
+                                                                new VariableExpression("v")
+                                                        )
+                                                )
+                                        )
+                                )
+                        ),
+                        new PrintStatement(
+                                new VariableExpression("i")
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "int n;" +
+                "n=5;" +
+                "for(int i=1;i<=n;i=i+1){" +
+                    "ref int v;" +
+                    "new(v, i);" +
+                    "print(rH(v));" +
+                "}" +
+                "print(i);",
+                ex19
+        );
+
+        IStatement ex20 = new CompoundStatement(
+                new CompoundStatement(
+                        new VariableDeclarationStatement(
+                                "n",
+                                new IntType()
+                        ),
+                        new AssignStatement(
+                                "n",
+                                new ValueExpression(
+                                        new IntValue(5)
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new ForStatement(
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement(
+                                                "i",
+                                                new IntType()
+                                        ),
+                                        new AssignStatement(
+                                                "i",
+                                                new ValueExpression(
+                                                        new IntValue(1)
+                                                )
+                                        )
+                                ),
+                                new RelationalExpression(
+                                        new VariableExpression("i"),
+                                        new VariableExpression("n"),
+                                        RelationalExpression.RelationalOperation.LESS_THAN_OR_EQUAL
+                                ),
+                                new AssignStatement(
+                                        "i",
+                                        new ArithmeticExpression(
+                                                new VariableExpression("i"),
+                                                new ValueExpression(
+                                                        new IntValue(1)
+                                                ),
+                                                ArithmeticExpression.ArithmeticOperation.ADDITION
+                                        )
+                                ),
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement(
+                                                "v",
+                                                new ReferenceType(
+                                                        new IntType()
+                                                )
+                                        ),
+                                        new CompoundStatement(
+                                                new NewStatement(
+                                                        "v",
+                                                        new VariableExpression("i")
+                                                ),
+                                                new PrintStatement(
+                                                        new ReadHeapExpression(
+                                                                new VariableExpression("v")
+                                                        )
+                                                )
+                                        )
+                                )
+                        ),
+                        new PrintStatement(
+                                new VariableExpression("v")
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "int n;" +
+                "n=5;" +
+                "for(int i=1;i<=n;i=i+1){" +
+                "ref int v;" +
+                "new(v, i);" +
+                "print(rH(v));" +
+                "}" +
+                "print(v);",
+                ex20
         );
     }
 }
