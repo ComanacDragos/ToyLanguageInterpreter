@@ -41,7 +41,7 @@ public class ForStatement implements IStatement {
         }
 
         if(this.originalSymbolsTable.size() == 0){
-            state.getSymbolsTable().stream().forEach(e -> this.originalSymbolsTable.put(e.getKey(), e.getValue()));
+            this.originalSymbolsTable = state.getSymbolsTable().shallowCopy();
         }
 
         BoolValue boolValue = (BoolValue) this.conditionalExpression.eval(state.getSymbolsTable(), state.getHeap());
