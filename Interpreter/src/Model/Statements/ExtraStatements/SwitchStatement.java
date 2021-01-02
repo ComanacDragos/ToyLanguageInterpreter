@@ -6,8 +6,11 @@ import Model.Expressions.IExpression;
 import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Types.IType;
+import Model.Values.IValue;
 import javafx.util.Pair;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SwitchStatement implements IStatement {
@@ -19,8 +22,25 @@ public class SwitchStatement implements IStatement {
         this.cases = cases;
     }
 
+    public SwitchStatement(IExpression conditionalExpression, Pair<IExpression, IStatement>... cases){
+        this.conditionalExpression = conditionalExpression;
+        this.cases = Arrays.asList(cases);
+    }
+
+
     @Override
     public ProgramState execute(ProgramState state) throws MyException {
+        IValue conditionalExpressionValue = this.conditionalExpression.eval(state.getSymbolsTable(), state.getHeap());
+        LinkedList<IStatement> statements = new LinkedList<>();
+        cases.forEach(
+                c->{
+                    if(c.getKey().eval(state.getSymbolsTable(), state.getHeap()).equals(conditionalExpressionValue)){
+                        statements.push(c.getValue());
+                    }
+                }
+        );
+
+        statements.forEach(state.getExecutionStack()::push);
         return null;
     }
 
@@ -30,10 +50,11 @@ public class SwitchStatement implements IStatement {
 
         this.cases.forEach(
                 c -> {
-                    IType caseExpression = c.getKey().typeCheck(typeEnvironment);
-                    /*if(!c.getKey()..equals(conditionalExpressionType)){
-
-                    }*/
+                    IType caseExpressionType = c.getKey().typeCheck(typeEnvironment);
+                    if(!caseExpressionType.equals(conditionalExpressionType)){
+                        throw new MyException("Case condition expression does not match statement condition expression");
+                    }
+                    c.getValue().typeCheck(typeEnvironment.shallowCopy());
                 }
         );
         return typeEnvironment;

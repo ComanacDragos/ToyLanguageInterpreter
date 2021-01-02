@@ -15,6 +15,7 @@ import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
 import Model.Statements.ExtraStatements.ForStatement;
+import Model.Statements.ExtraStatements.SwitchStatement;
 import Model.Statements.FileStatements.CloseReadFileStatement;
 import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
@@ -41,6 +42,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.BufferedReader;
 import java.util.LinkedHashMap;
@@ -1040,6 +1042,59 @@ public class ControllerSelectProgram {
                 "}" +
                 "print(v);",
                 ex20
+        );
+
+        IStatement ex21 = new CompoundStatement(
+                new CompoundStatement(
+                        new VariableDeclarationStatement(
+                                "n",
+                                new IntType()
+                        ),
+                        new AssignStatement(
+                                "n",
+                                new ValueExpression(
+                                        new IntValue(2)
+                                )
+                        )
+                ),
+                new SwitchStatement(
+                        new VariableExpression("n"),
+                         new Pair<>(
+                                 new ValueExpression(new IntValue(1)),
+                                 new PrintStatement(
+                                         new ValueExpression(
+                                                 new StringValue("case 1")
+                                         )
+                                 )
+                         ),
+                        new Pair<>(
+                                new ValueExpression(new IntValue(2)),
+                                new PrintStatement(
+                                        new ValueExpression(
+                                                new StringValue("case 2")
+                                        )
+                                )
+                        ),
+                        new Pair<>(
+                                new ValueExpression(new IntValue(3)),
+                                new PrintStatement(
+                                        new ValueExpression(
+                                                new StringValue("case 3")
+                                        )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "int n;" +
+                "n=2;" +
+                "switch(n){" +
+                "case 1 -> print(\"case1\")" +
+                "case 2 -> print(\"case2\")" +
+                "case 3 -> print(\"case3\")" +
+                "}",
+                ex21
         );
     }
 }

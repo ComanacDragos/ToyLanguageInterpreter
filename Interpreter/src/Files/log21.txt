@@ -1,0 +1,294 @@
+Program: 1
+Execution stack
+(
+int n;
+n = 2;
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int n;
+n = 2;
+)
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int n;
+n = 2;
+)
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int n;
+)
+(
+n = 2;
+)
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int n;
+)
+(
+n = 2;
+)
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+n = 2;
+)
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+n -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+n = 2;
+)
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+n -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+n -> 2
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+switch(n){
+case 1: 
+{
+print("case 1");
+}
+case 2: 
+{
+print("case 2");
+}
+case 3: 
+{
+print("case 3");
+}
+
+)
+Symbols table
+n -> 2
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print("case 2");
+)
+Symbols table
+n -> 2
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print("case 2");
+)
+Symbols table
+n -> 2
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+Symbols table
+n -> 2
+Out
+"case 2"
+File table
+Heap
+
+
+
