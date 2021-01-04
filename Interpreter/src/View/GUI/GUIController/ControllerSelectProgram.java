@@ -14,6 +14,7 @@ import Model.Statements.*;
 import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
+import Model.Statements.ExtraStatements.ConditionalAssignmentStatement;
 import Model.Statements.ExtraStatements.ForStatement;
 import Model.Statements.ExtraStatements.SwitchStatement;
 import Model.Statements.FileStatements.CloseReadFileStatement;
@@ -1095,6 +1096,218 @@ public class ControllerSelectProgram {
                 "case 3 -> print(\"case3\")" +
                 "}",
                 ex21
+        );
+
+        IStatement ex22 = new CompoundStatement(
+            new CompoundStatement(
+                    new CompoundStatement(
+                            new VariableDeclarationStatement(
+                                    "a",
+                                    new ReferenceType(
+                                            new IntType()
+                                    )
+                            ),
+                            new CompoundStatement(
+                                    new VariableDeclarationStatement(
+                                        "b",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                    ),
+                                    new VariableDeclarationStatement(
+                                            "v",
+                                            new IntType()
+                                    )
+                            )
+                    ),
+                    new CompoundStatement(
+                        new CompoundStatement(
+                                new NewStatement(
+                                        "a",
+                                        new ValueExpression(
+                                                new IntValue(0)
+                                        )
+                                ),
+                                new NewStatement(
+                                        "b",
+                                        new ValueExpression(
+                                                new IntValue(0)
+                                        )
+                                )
+                        ),
+                            new CompoundStatement(
+                                    new WriteHeapStatement(
+                                            "a",
+                                            new ValueExpression(
+                                                    new IntValue(1)
+                                            )
+                                    ),
+                                    new WriteHeapStatement(
+                                            "b",
+                                            new ValueExpression(
+                                                    new IntValue(2)
+                                            )
+                                    )
+                            )
+                    )
+            ),
+            new CompoundStatement(
+                new CompoundStatement(
+                        new ConditionalAssignmentStatement(
+                                "v",
+                                new RelationalExpression(
+                                        new ReadHeapExpression(
+                                                new VariableExpression("a")
+                                        ),
+                                        new ReadHeapExpression(
+                                                new VariableExpression("b")
+                                        ),
+                                        RelationalExpression.RelationalOperation.LESS_THAN
+                                ),
+                                new ValueExpression(new IntValue(100)),
+                                new ValueExpression(new IntValue(200))
+                        ),
+                        new PrintStatement(new VariableExpression("v"))
+                ),
+                    new CompoundStatement(
+                            new ConditionalAssignmentStatement(
+                                    "v",
+                                    new RelationalExpression(
+                                            new ArithmeticExpression(
+                                                    new ReadHeapExpression(
+                                                            new VariableExpression("b")
+                                                    ),
+                                                    new ValueExpression(new IntValue(2)),
+                                                    ArithmeticExpression.ArithmeticOperation.SUBTRACTION
+                                            ),
+                                            new ReadHeapExpression(
+                                                    new VariableExpression("a")
+                                            ),
+                                            RelationalExpression.RelationalOperation.GREATER_THAN
+                                    ),
+                                    new ValueExpression(new IntValue(100)),
+                                    new ValueExpression(new IntValue(200))
+                            ),
+                            new PrintStatement(new VariableExpression("v"))
+                    )
+            )
+        );
+        this.programsDescriptions.put(
+                "Ref int a; Ref int b; int v;\n" +
+                "new(a,0); new(b,0);\n" +
+                "wh(a,1); wh(b,2);\n" +
+                "v=(rh(a)<rh(b))?100:200;\n" +
+                "print(v);\n" +
+                "v= ((rh(b)-2)>rh(a))?100:200;\n" +
+                "print(v);",
+                ex22
+        );
+
+
+        IStatement ex23 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement(
+                                        "a",
+                                        new ReferenceType(
+                                                new IntType()
+                                        )
+                                ),
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement(
+                                                "b",
+                                                new ReferenceType(
+                                                        new IntType()
+                                                )
+                                        ),
+                                        new VariableDeclarationStatement(
+                                                "v",
+                                                new IntType()
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new CompoundStatement(
+                                        new NewStatement(
+                                                "a",
+                                                new ValueExpression(
+                                                        new IntValue(0)
+                                                )
+                                        ),
+                                        new NewStatement(
+                                                "b",
+                                                new ValueExpression(
+                                                        new IntValue(0)
+                                                )
+                                        )
+                                ),
+                                new CompoundStatement(
+                                        new WriteHeapStatement(
+                                                "a",
+                                                new ValueExpression(
+                                                        new IntValue(1)
+                                                )
+                                        ),
+                                        new WriteHeapStatement(
+                                                "b",
+                                                new ValueExpression(
+                                                        new IntValue(2)
+                                                )
+                                        )
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new ConditionalAssignmentStatement(
+                                        "a",
+                                        new RelationalExpression(
+                                                new ReadHeapExpression(
+                                                        new VariableExpression("a")
+                                                ),
+                                                new ReadHeapExpression(
+                                                        new VariableExpression("b")
+                                                ),
+                                                RelationalExpression.RelationalOperation.LESS_THAN
+                                        ),
+                                        new ValueExpression(new IntValue(100)),
+                                        new ValueExpression(new IntValue(200))
+                                ),
+                                new PrintStatement(new VariableExpression("v"))
+                        ),
+                        new CompoundStatement(
+                                new ConditionalAssignmentStatement(
+                                        "v",
+                                        new RelationalExpression(
+                                                new ArithmeticExpression(
+                                                        new ReadHeapExpression(
+                                                                new VariableExpression("b")
+                                                        ),
+                                                        new ValueExpression(new IntValue(2)),
+                                                        ArithmeticExpression.ArithmeticOperation.SUBTRACTION
+                                                ),
+                                                new ReadHeapExpression(
+                                                        new VariableExpression("a")
+                                                ),
+                                                RelationalExpression.RelationalOperation.GREATER_THAN
+                                        ),
+                                        new ValueExpression(new IntValue(100)),
+                                        new ValueExpression(new IntValue(200))
+                                ),
+                                new PrintStatement(new VariableExpression("v"))
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "Ref int a; Ref int b; int v;\n" +
+                "new(a,0); new(b,0);\n" +
+                "wh(a,1); wh(b,2);\n" +
+                "a=(rh(a)<rh(b))?100:200;\n" +
+                "print(v);\n" +
+                "v= ((rh(b)-2)>rh(a))?100:200;\n" +
+                "print(v);",
+                ex23
         );
     }
 }
