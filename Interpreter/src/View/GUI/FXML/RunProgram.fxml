@@ -19,8 +19,8 @@
    </columnConstraints>
    <rowConstraints>
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="597.0" minHeight="10.0" prefHeight="597.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="222.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="203.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
    </rowConstraints>
@@ -36,13 +36,13 @@
       <ListView fx:id="programIdsListView" onMouseClicked="#handleSelectProgram" prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <ListView fx:id="executionStackListView" prefHeight="631.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="3" />
       <Label prefHeight="17.0" prefWidth="86.0" text="Execution stack" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <ListView fx:id="outListView" prefHeight="631.0" prefWidth="397.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+      <ListView fx:id="outListView" prefHeight="631.0" prefWidth="397.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
       <Label text="Out" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <Label text="Program states" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Label text="Heap" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <ListView fx:id="fileTableListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Label text="File table" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <TableView fx:id="symbolsTableView" prefHeight="398.0" prefWidth="170.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <TableView fx:id="symbolsTableView" prefHeight="600.0" prefWidth="211.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <columns>
             <TableColumn fx:id="symbolsTableNameColumn" prefWidth="84.0" text="Name" />
             <TableColumn fx:id="symbolsTableValueColumn" prefWidth="120.0" text="Value" />
@@ -51,6 +51,14 @@
       <Label text="Symbols table" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <Label fx:id="numberOfProgramStatesLabel" text="Number of program states: 0" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <Button fx:id="openNewWindowButton" mnemonicParsing="false" onAction="#handleOpenNewWindow" prefHeight="25.0" prefWidth="314.0" text="Open this program in new window" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+      <TableView fx:id="semaphoreTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+        <columns>
+          <TableColumn fx:id="semaphoreIdColumn" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="semaphoreSizeColumn" prefWidth="52.0" text="Size" />
+            <TableColumn fx:id="semaphoreProgramsColumn" prefWidth="159.0" text="Programs" />
+        </columns>
+      </TableView>
+      <Label text="Semaphore table" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

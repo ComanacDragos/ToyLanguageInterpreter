@@ -2,6 +2,7 @@ package View.GUI.GUIController;
 
 import Controller.Controller;
 import Exceptions.MyException;
+import Model.ADTs.MySemaphore;
 import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
@@ -23,6 +24,14 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class ControllerRunProgram extends MyObserver {
+    @FXML
+    TableView<MySemaphore.SemaphoreEntry> semaphoreTableView;
+    @FXML
+    TableColumn<MySemaphore.SemaphoreEntry, Integer> semaphoreIdColumn;
+    @FXML
+    TableColumn<MySemaphore.SemaphoreEntry, Integer> semaphoreSizeColumn;
+    @FXML
+    TableColumn<MySemaphore.SemaphoreEntry, String> semaphoreProgramsColumn;
     @FXML
     Button runOneStepButton;
     @FXML
@@ -67,8 +76,13 @@ public class ControllerRunProgram extends MyObserver {
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        this.semaphoreIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.semaphoreSizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        this.semaphoreProgramsColumn.setCellValueFactory(new PropertyValueFactory<>("programs"));
+
         this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        this.semaphoreTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     public void setParentStage(Stage parentStage) {
@@ -96,6 +110,7 @@ public class ControllerRunProgram extends MyObserver {
                 this.setHeapTableView();
                 this.setFileTableListView();
                 this.setOutListView();
+                this.setSemaphoreTableView();
             }
         }
         catch (MyException exception){
@@ -193,6 +208,20 @@ public class ControllerRunProgram extends MyObserver {
         this.outListView.setItems(out);
     }
 
+    void setSemaphoreTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<MySemaphore.SemaphoreEntry> semaphores = FXCollections.observableArrayList();
+
+        semaphores.addAll(
+                program.getSemaphoreTable().stream()
+                .map(e->new MySemaphore.SemaphoreEntry(e.getKey(), e.getValue().getKey(), e.getValue().getValue()))
+                .collect(Collectors.toList())
+        );
+
+        semaphoreTableView.setItems(semaphores);
+    }
+
     ProgramState getSelectedProgram() throws MyException{
         Integer id = this.programIdsListView.getSelectionModel().getSelectedItem();
 
@@ -268,7 +297,7 @@ public class ControllerRunProgram extends MyObserver {
             ControllerRunProgram newController = runProgramLoader.getController();
 
             Stage newStage = new Stage();
-            Scene scene = new Scene(root, 1024, 720);
+            Scene scene = new Scene(root, 1024, 900);
 
             newController.setParentStage(newStage);
             newController.setController(this.controller);

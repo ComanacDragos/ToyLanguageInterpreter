@@ -1,0 +1,2234 @@
+Program: 1
+Execution stack
+(
+ref(int) v1;
+int cnt;
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) v1;
+int cnt;
+)
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) v1;
+int cnt;
+)
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) v1;
+)
+(
+int cnt;
+)
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+ref(int) v1;
+)
+(
+int cnt;
+)
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+int cnt;
+)
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+int cnt;
+)
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+createSemaphore(cnt, readHeap(v1));
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+)
+(
+createSemaphore(cnt, readHeap(v1));
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+new(v1, 1);
+)
+(
+createSemaphore(cnt, readHeap(v1));
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (0, int)
+Out
+File table
+Heap
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+createSemaphore(cnt, readHeap(v1));
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+createSemaphore(cnt, readHeap(v1));
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 0
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 2
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+)
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 2
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 2
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 2
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 2
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 2
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 1
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+print(readHeap(v1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+print(readHeap(v1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 2
+Execution stack
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[2]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 2
+Execution stack
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+acquire(cnt);
+)
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[]
+
+
+
+Program: 1
+Execution stack
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 1
+Execution stack
+(
+print((readHeap(v1) - 1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 1
+Execution stack
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 1
+Execution stack
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 3
+Execution stack
+(
+acquire(cnt);
+)
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[1]
+
+
+
+Program: 1
+Execution stack
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 10));
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 10));
+)
+(
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 10
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 100
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+writeHeap(v1, (readHeap(v1) * 2));
+)
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 100
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 200
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+print(readHeap(v1));
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 200
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+print(readHeap(v1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 200
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+print(readHeap(v1));
+)
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+File table
+Heap
+1 -> 200
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+200
+File table
+Heap
+1 -> 200
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+(
+release(cnt);
+)
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+200
+File table
+Heap
+1 -> 200
+Semaphore
+1 -> 1=[3]
+
+
+
+Program: 3
+Execution stack
+Symbols table
+cnt -> 1
+v1 -> (1, int)
+Out
+10
+9
+200
+File table
+Heap
+1 -> 200
+Semaphore
+1 -> 1=[]
+
+
+
