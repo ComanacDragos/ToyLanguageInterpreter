@@ -18,7 +18,7 @@ public class GUIView extends Application {
 
         controller.setParentStage(primaryStage);
 
-        Scene scene = new Scene(root, 1024, 720);
+        Scene scene = new Scene(root, 1024, 900);
         //scene.getStylesheets().add(getClass().getResource("CSS/main.css").toExternalForm());
 
         primaryStage.setOnCloseRequest(e -> System.exit(0));

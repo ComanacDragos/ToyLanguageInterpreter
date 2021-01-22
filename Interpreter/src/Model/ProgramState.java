@@ -21,13 +21,16 @@ public class ProgramState {
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
+    MyCountDownLatchTable countDownLatchTable;
+
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyCountDownLatchTable countDownLatchTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
         this.originalProgram = originalProgram;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.countDownLatchTable = countDownLatchTable;
         this.programId = ProgramState.currentId.incrementAndGet();
     }
 
@@ -83,6 +86,14 @@ public class ProgramState {
         return programId;
     }
 
+    public MyCountDownLatchTable getCountDownLatchTable() {
+        return countDownLatchTable;
+    }
+
+    public void setCountDownLatchTable(MyCountDownLatchTable countDownLatchTable) {
+        this.countDownLatchTable = countDownLatchTable;
+    }
+
     public MyIStack<IStatement> executionStackDeepCopy(){
         MyIStack<IStatement> newExecutionStack = new MyStack<>();
         this.executionStack.stream().map(
@@ -127,6 +138,15 @@ public class ProgramState {
         return newHeap;
     }
 
+    public MyCountDownLatchTable countDownLatchTableDeepCopy(){
+        MyCountDownLatchTable newLatch = new MyCountDownLatchTable();
+
+        this.countDownLatchTable.stream().forEach(
+                e-> newLatch.put(e.getKey(), e.getValue())
+        );
+        return newLatch;
+    }
+
     public ProgramState deepCopy(){
 
         return new ProgramState(this.executionStackDeepCopy(),
@@ -134,6 +154,7 @@ public class ProgramState {
                                 this.outDeepCopy(),
                                 this.fileTableDeepCopy(),
                                 this.heapDeepCopy(),
+                                this.countDownLatchTableDeepCopy(),
                                 this.originalProgram.deepCopy());
     }
 
@@ -154,7 +175,8 @@ public class ProgramState {
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +
-                "Heap\n" + this.heap.toString()
+                "Heap\n" + this.heap.toString() +
+                "CountDownLatch\n" + this.countDownLatchTable.toString()
                 +"\n\n";
     }
 }

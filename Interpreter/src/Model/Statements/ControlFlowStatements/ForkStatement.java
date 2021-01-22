@@ -33,6 +33,7 @@ public class ForkStatement implements IStatement {
                 state.getOut(),
                 state.getFileTable(),
                 state.getHeap(),
+                state.getCountDownLatchTable(),
                 statement.deepCopy()
         );
     }

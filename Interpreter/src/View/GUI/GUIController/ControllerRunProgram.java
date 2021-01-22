@@ -24,6 +24,12 @@ import java.util.stream.Collectors;
 
 public class ControllerRunProgram extends MyObserver {
     @FXML
+    TableColumn<Pair<Integer, Integer>, Integer> latchValueColumn;
+    @FXML
+    TableColumn<Pair<Integer, Integer>, Integer> latchLocationColumn;
+    @FXML
+    TableView<Pair<Integer, Integer>> latchTableView;
+    @FXML
     Button runOneStepButton;
     @FXML
     Button runAnotherProgramButton;
@@ -67,8 +73,12 @@ public class ControllerRunProgram extends MyObserver {
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        this.latchLocationColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
+        this.latchValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
+
         this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        this.latchTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     public void setParentStage(Stage parentStage) {
@@ -96,6 +106,7 @@ public class ControllerRunProgram extends MyObserver {
                 this.setHeapTableView();
                 this.setFileTableListView();
                 this.setOutListView();
+                this.setLatchTableView();
             }
         }
         catch (MyException exception){
@@ -191,6 +202,19 @@ public class ControllerRunProgram extends MyObserver {
         );
 
         this.outListView.setItems(out);
+    }
+
+    void setLatchTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<Pair<Integer, Integer>> latches = FXCollections.observableArrayList();
+
+        latches.addAll(
+                program.getCountDownLatchTable().stream()
+                .map(e -> new Pair<>(e.getKey(), e.getValue()))
+                .collect(Collectors.toList())
+        );
+        this.latchTableView.setItems(latches);
     }
 
     ProgramState getSelectedProgram() throws MyException{

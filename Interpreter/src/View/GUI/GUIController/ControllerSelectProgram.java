@@ -14,6 +14,9 @@ import Model.Statements.*;
 import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
+import Model.Statements.CountDownLatchStatements.AwaitStatement;
+import Model.Statements.CountDownLatchStatements.CountDownStatement;
+import Model.Statements.CountDownLatchStatements.NewLatchStatement;
 import Model.Statements.FileStatements.CloseReadFileStatement;
 import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
@@ -93,8 +96,9 @@ public class ControllerSelectProgram {
                 MyIList<IValue> out = new MyList<>();
                 MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                 MyHeap heap = new MyHeap();
+                MyCountDownLatchTable latchTable = new MyCountDownLatchTable();
 
-                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, latchTable, statement);
 
                 IRepository repository = new Repository("src/Files/log" + (this.programsListView.getSelectionModel().getSelectedIndices().get(0) + 1) + ".txt");
                 Controller interpreterController = new Controller(repository);
@@ -879,6 +883,187 @@ public class ControllerSelectProgram {
                 "print(a);" +
                 "print(b);",
                 ex18
+        );
+
+        IStatement ex19 = new CompoundStatement(
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new VariableDeclarationStatement("v1", new ReferenceType(new IntType())),
+                                new VariableDeclarationStatement("v2", new ReferenceType(new IntType()))
+                        ),
+                        new CompoundStatement(
+                                new VariableDeclarationStatement("v3", new ReferenceType(new IntType())),
+                                new VariableDeclarationStatement("cnt", new IntType())
+                        )
+                ),
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new CompoundStatement(
+                                        new NewStatement("v1", new ValueExpression(new IntValue(2))),
+                                        new NewStatement("v2", new ValueExpression(new IntValue(3)))
+                                ),
+                                new CompoundStatement(
+                                        new NewStatement("v3", new ValueExpression(new IntValue(4))),
+                                        new NewLatchStatement("cnt", new ReadHeapExpression(new VariableExpression("v2")))
+                                )
+                        ),
+                        new CompoundStatement(
+                                new CompoundStatement(
+                                    new CompoundStatement(
+                                          new ForkStatement(
+                                                  new CompoundStatement(
+                                                       new CompoundStatement(
+                                                               new WriteHeapStatement("v1", new ArithmeticExpression(
+                                                                       new ReadHeapExpression(new VariableExpression("v1")),
+                                                                       new ValueExpression(new IntValue(10)),
+                                                                       ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                    )
+                                                               ),
+                                                               new PrintStatement(new ReadHeapExpression(new VariableExpression("v1")))
+                                                       ),
+                                                      new CountDownStatement("cnt")
+                                                  )
+                                          ),
+                                        new ForkStatement(
+                                                new CompoundStatement(
+                                                        new CompoundStatement(
+                                                                new WriteHeapStatement("v2", new ArithmeticExpression(
+                                                                        new ReadHeapExpression(new VariableExpression("v2")),
+                                                                        new ValueExpression(new IntValue(10)),
+                                                                        ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                )
+                                                                ),
+                                                                new PrintStatement(new ReadHeapExpression(new VariableExpression("v2")))
+                                                        ),
+                                                        new CountDownStatement("cnt")
+                                                )
+                                        )
+                                    ),
+                                    new CompoundStatement(
+                                            new ForkStatement(
+                                                    new CompoundStatement(
+                                                            new CompoundStatement(
+                                                                    new WriteHeapStatement("v3", new ArithmeticExpression(
+                                                                            new ReadHeapExpression(new VariableExpression("v3")),
+                                                                            new ValueExpression(new IntValue(10)),
+                                                                            ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                    )
+                                                                    ),
+                                                                    new PrintStatement(new ReadHeapExpression(new VariableExpression("v3")))
+                                                            ),
+                                                            new CountDownStatement("cnt")
+                                                    )
+                                            ),
+                                            new AwaitStatement("cnt")
+                                    )
+                                ),
+                                new CompoundStatement(
+                                    new CompoundStatement(
+                                          new PrintStatement(new ValueExpression(new IntValue(100))),
+                                          new CountDownStatement("cnt")
+                                    ),
+                                    new PrintStatement(new ValueExpression(new IntValue(100)))
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "Ref int v1; Ref int v2; Ref int v3; int cnt;\n" +
+                "new(v1,2);new(v2,3);new(v3,4);newLatch(cnt,rH(v2));\n" +
+                "fork(wh(v1,rh(v1)*10));print(rh(v1));countDown(cnt);\n" +
+                "fork(wh(v2,rh(v2)*10));print(rh(v2));countDown(cnt);\n" +
+                "fork(wh(v3,rh(v3)*10));print(rh(v3));countDown(cnt))));\n" +
+                "await(cnt);\n" +
+                "print(100);\n" +
+                "countDown(cnt);\n" +
+                "\n" +
+                "print(100)",
+                ex19
+        );
+
+        IStatement ex20 = new CompoundStatement(
+                new VariableDeclarationStatement("v1", new ReferenceType(new IntType())),
+                new CompoundStatement(
+                        new VariableDeclarationStatement("v2", new ReferenceType(new IntType())),
+                        new CompoundStatement(
+                            new VariableDeclarationStatement("v3", new ReferenceType(new IntType())),
+                            new CompoundStatement(
+                                    new VariableDeclarationStatement("cnt", new IntType()),
+                                    new CompoundStatement(
+                                            new CompoundStatement(
+                                                    new CompoundStatement(
+                                                            new NewStatement("v1", new ValueExpression(new IntValue(2))),
+                                                            new NewStatement("v2", new ValueExpression(new IntValue(3)))
+                                                    ),
+                                                    new CompoundStatement(
+                                                            new NewStatement("v3", new ValueExpression(new IntValue(4))),
+                                                            new NewLatchStatement("cnt", new ReadHeapExpression(new VariableExpression("v2")))
+                                                    )
+                                    ),
+                                    new CompoundStatement(
+                                            new ForkStatement(
+                                                    new CompoundStatement(
+                                                            new WriteHeapStatement("v1", new ArithmeticExpression(
+                                                                    new ReadHeapExpression(new VariableExpression("v1")),
+                                                                    new ValueExpression(new IntValue(10)),
+                                                                    ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                            )),
+                                                            new CompoundStatement(
+                                                                    new PrintStatement(new ReadHeapExpression(new VariableExpression("v1"))),
+                                                                    new CountDownStatement("cnt")
+                                                            )
+                                                    )
+                                            ),
+                                            new CompoundStatement(
+                                                    new ForkStatement(
+                                                            new CompoundStatement(
+                                                                    new WriteHeapStatement("v2", new ArithmeticExpression(
+                                                                            new ReadHeapExpression(new VariableExpression("v2")),
+                                                                            new ValueExpression(new IntValue(10)),
+                                                                            ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                    )),
+                                                                    new CompoundStatement(
+                                                                            new PrintStatement(new ReadHeapExpression(new VariableExpression("v2"))),
+                                                                            new CountDownStatement("cnt")
+                                                                    )
+                                                            )
+                                                    ),
+                                                    new CompoundStatement(
+                                                            new ForkStatement(
+                                                                    new CompoundStatement(
+                                                                            new WriteHeapStatement("v3", new ArithmeticExpression(
+                                                                                    new ReadHeapExpression(new VariableExpression("v3")),
+                                                                                    new ValueExpression(new IntValue(10)),
+                                                                                    ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                            )),
+                                                                            new CompoundStatement(
+                                                                                    new PrintStatement(new ReadHeapExpression(new VariableExpression("v3"))),
+                                                                                    new CountDownStatement("cnt")
+                                                                            )
+                                                                    )
+                                                            ),
+                                                            new CompoundStatement(
+                                                                    new AwaitStatement("cnt"),
+                                                                    new CompoundStatement(
+                                                                            new CompoundStatement(
+                                                                                    new PrintStatement(new ValueExpression(new IntValue(100))),
+                                                                                    new CountDownStatement("cnt")
+                                                                            ),
+                                                                            new PrintStatement(new ValueExpression(new IntValue(100)))
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                    )
+                            )
+                )
+                )
+                ));
+
+        this.programsDescriptions.put(
+                "same as prev but with different compund statements order",
+                ex20
         );
     }
 }
