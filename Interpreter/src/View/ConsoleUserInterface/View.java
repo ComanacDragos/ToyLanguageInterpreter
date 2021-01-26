@@ -798,12 +798,12 @@ public class View {
                 (statement, description) ->{
                     MyIStack<IStatement> executionStack = new MyStack<>();
                     executionStack.push(statement);
-                    MyIDictionary<String, IValue> symbolsTable = new MyDictionary<>();
+                    MyIStack<MyIDictionary<String, IValue>> symbolsTable = new MyStack<>();
                     MyIList<IValue> out = new MyList<>();
                     MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                     MyHeap heap = new MyHeap();
 
-                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, new MyDictionary<>(), statement);
 
                     IRepository repository = new Repository("src/Files/log" + currentKey + ".txt");
                     Controller controller = new Controller(repository);

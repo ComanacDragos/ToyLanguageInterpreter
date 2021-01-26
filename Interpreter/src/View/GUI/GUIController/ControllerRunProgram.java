@@ -24,6 +24,14 @@ import java.util.stream.Collectors;
 
 public class ControllerRunProgram extends MyObserver {
     @FXML
+    TableColumn<ProgramState.ProceduresTableEntry, IStatement> proceduresBodyColumn;
+    @FXML
+    TableColumn<ProgramState.ProceduresTableEntry, String> proceduresParametersColumn;
+    @FXML
+    TableView<ProgramState.ProceduresTableEntry> proceduresTableView;
+    @FXML
+    TableColumn<ProgramState.ProceduresTableEntry, String> proceduresNameColumn;
+    @FXML
     Button runOneStepButton;
     @FXML
     Button runAnotherProgramButton;
@@ -67,6 +75,12 @@ public class ControllerRunProgram extends MyObserver {
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        this.proceduresBodyColumn.setCellValueFactory(new PropertyValueFactory<>("body"));
+        this.proceduresParametersColumn.setCellValueFactory(new PropertyValueFactory<>("parameters"));
+        this.proceduresNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+
+        this.proceduresTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
@@ -96,6 +110,7 @@ public class ControllerRunProgram extends MyObserver {
                 this.setHeapTableView();
                 this.setFileTableListView();
                 this.setOutListView();
+                this.setProceduresTableView();
             }
         }
         catch (MyException exception){
@@ -191,6 +206,20 @@ public class ControllerRunProgram extends MyObserver {
         );
 
         this.outListView.setItems(out);
+    }
+
+    void setProceduresTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<ProgramState.ProceduresTableEntry> procedures = FXCollections.observableArrayList();
+
+        procedures.addAll(
+                program.getProceduresTable().stream()
+                .map(e->new ProgramState.ProceduresTableEntry(e.getKey(), e.getValue().getKey(), e.getValue().getValue()))
+                .collect(Collectors.toList())
+        );
+
+        this.proceduresTableView.setItems(procedures);
     }
 
     ProgramState getSelectedProgram() throws MyException{

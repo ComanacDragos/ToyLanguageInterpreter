@@ -1,0 +1,2886 @@
+Program: 2
+Execution stack
+(
+procedure sum(a, b)
+{int v;
+v = (a + b);
+print(v);
+}
+procedure product(a, b)
+{int v;
+v = (a * b);
+print(v);
+}
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+
+
+
+Program: 2
+Execution stack
+(
+procedure sum(a, b)
+{int v;
+v = (a + b);
+print(v);
+}
+)
+(
+procedure product(a, b)
+{int v;
+v = (a * b);
+print(v);
+}
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+
+
+
+Program: 2
+Execution stack
+(
+procedure sum(a, b)
+{int v;
+v = (a + b);
+print(v);
+}
+)
+(
+procedure product(a, b)
+{int v;
+v = (a * b);
+print(v);
+}
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+
+
+
+Program: 2
+Execution stack
+(
+procedure product(a, b)
+{int v;
+v = (a * b);
+print(v);
+}
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+procedure product(a, b)
+{int v;
+v = (a * b);
+print(v);
+}
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+procedure product(a, b)
+{int v;
+v = (a * b);
+print(v);
+}
+)
+(
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+procedure product(a, b)
+{int v;
+v = (a * b);
+print(v);
+}
+)
+(
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = 2;
+int w;
+w = 5;
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = 2;
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = 2;
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = 2;
+)
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = 2;
+)
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+)
+(
+v = 2;
+)
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+)
+(
+v = 2;
+)
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+v = 2;
+)
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 0
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+v = 2;
+)
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 0
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int w;
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int w;
+)
+(
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int w;
+)
+(
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 0
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+w = 5;
+)
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 0
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+call sum((v * 10), w);
+print(v);
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+call sum((v * 10), w);
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+call sum((v * 10), w);
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+call sum((v * 10), w);
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+call sum((v * 10), w);
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = (a + b);
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = (a + b);
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+)
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+int v;
+)
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+v -> 0
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+v -> 0
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+v -> 25
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+)
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+v -> 25
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+v -> 25
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+return
+)
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+a -> 20
+b -> 5
+v -> 25
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+)
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+fork(
+call product(v, w);
+)
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+fork(
+call product(v, w);
+)
+)
+(
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+fork(
+call product(v, w);
+)
+)
+(
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+call product(v, w);
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+(
+fork(
+call sum(v, w);
+)
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+call product(v, w);
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 2
+Execution stack
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+int v;
+v = (a * b);
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+call sum(v, w);
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+int v;
+v = (a * b);
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+call sum(v, w);
+)
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+int v;
+v = (a * b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+int v;
+v = (a + b);
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+int v;
+v = (a * b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+int v;
+v = (a + b);
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+int v;
+)
+(
+v = (a * b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+int v;
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+int v;
+)
+(
+v = (a * b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+int v;
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+v = (a * b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 0
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+int v;
+)
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+v = (a * b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 0
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+int v;
+)
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 10
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 0
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 10
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+v = (a + b);
+)
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 0
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 10
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 7
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 10
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+print(v);
+)
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 7
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 3
+Execution stack
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+7
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 7
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+7
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+(
+return
+)
+Symbols table
+(
+a -> 2
+b -> 5
+v -> 7
+
+)
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+7
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+
+Program: 4
+Execution stack
+Symbols table
+(
+v -> 2
+w -> 5
+
+)
+Out
+25
+2
+10
+7
+File table
+Heap
+Procedures
+product -> [a, b]=int v;
+v = (a * b);
+print(v);
+sum -> [a, b]=int v;
+v = (a + b);
+print(v);
+
+
+

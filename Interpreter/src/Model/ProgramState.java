@@ -5,15 +5,17 @@ import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
+import javafx.util.Pair;
 
 import java.io.BufferedReader;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class ProgramState {
     MyIStack<IStatement> executionStack;
-    MyIDictionary<String, IValue> symbolsTable;
+    MyIStack<MyIDictionary<String, IValue>> symbolsTable;
     MyIList<IValue> out;
     IStatement originalProgram;
     MyIDictionary<String, BufferedReader> fileTable;
@@ -21,7 +23,9 @@ public class ProgramState {
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
+    MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTable;
+
+    public ProgramState(MyIStack<IStatement> executionStack, MyIStack<MyIDictionary<String, IValue>> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
@@ -29,6 +33,8 @@ public class ProgramState {
         this.fileTable = fileTable;
         this.heap = heap;
         this.programId = ProgramState.currentId.incrementAndGet();
+
+        this.proceduresTable = proceduresTable;
     }
 
     public IStatement getOriginalProgram() {
@@ -36,7 +42,7 @@ public class ProgramState {
     }
 
     public MyIDictionary<String, IValue> getSymbolsTable() {
-        return symbolsTable;
+        return symbolsTable.peek();
     }
 
     public MyIList<IValue> getOut() {
@@ -59,8 +65,20 @@ public class ProgramState {
         this.out = out;
     }
 
-    public void setSymbolsTable(MyIDictionary<String, IValue> symbolsTable) {
+    public void setSymbolsTable(MyIStack<MyIDictionary<String, IValue>> symbolsTable) {
         this.symbolsTable = symbolsTable;
+    }
+
+    public MyIDictionary<String, Pair<List<String>, IStatement>> getProceduresTable() {
+        return proceduresTable;
+    }
+
+    public void setProceduresTable(MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTable) {
+        this.proceduresTable = proceduresTable;
+    }
+
+    public MyIStack<MyIDictionary<String, IValue>> getSymbolsTableStack(){
+        return this.symbolsTable;
     }
 
     public MyIDictionary<String, BufferedReader> getFileTable() {
@@ -91,14 +109,24 @@ public class ProgramState {
         return newExecutionStack;
     }
 
-    public MyIDictionary<String, IValue> symbolsTableDeepCopy(){
-        MyIDictionary<String, IValue> newSymbolsTable = new MyDictionary<>();
-        this.symbolsTable.stream().collect(
-                Collectors.toMap(Map.Entry::getKey, e -> e.getValue().deepCopy())
-        ).entrySet().stream().forEach(
-                e -> newSymbolsTable.put(e.getKey(), e.getValue())
-        );
-        return newSymbolsTable;
+    public MyIStack<MyIDictionary<String, IValue>> symbolsTableDeepCopy(){
+        MyIStack<MyIDictionary<String, IValue>> auxSymbolsTableStack = new MyStack<>();
+
+        this.symbolsTable.stream()
+                .forEach(
+                        table->{
+                            MyIDictionary<String, IValue> newSymbolsTable = new MyDictionary<>();
+                            table.stream().collect(
+                                    Collectors.toMap(Map.Entry::getKey, e -> e.getValue().deepCopy())
+                            ).entrySet().stream().forEach(
+                                    e -> newSymbolsTable.put(e.getKey(), e.getValue())
+                            );
+                            auxSymbolsTableStack.push(table);
+                        }
+                );
+        MyIStack<MyIDictionary<String, IValue>> newSymbolsTableStack = new MyStack<>();
+        auxSymbolsTableStack.forEach(newSymbolsTableStack::push);
+        return newSymbolsTableStack;
     }
 
     public MyIList<IValue> outDeepCopy(){
@@ -127,6 +155,15 @@ public class ProgramState {
         return newHeap;
     }
 
+    public MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTableDeepCopy(){
+        MyIDictionary<String, Pair<List<String>, IStatement>> newProceduresTable = new MyDictionary<>();
+
+        this.proceduresTable.stream().forEach(
+                e->newProceduresTable.put(e.getKey(), new Pair<>(e.getValue().getKey(), e.getValue().getValue()))
+        );
+
+        return newProceduresTable;
+    }
     public ProgramState deepCopy(){
 
         return new ProgramState(this.executionStackDeepCopy(),
@@ -134,6 +171,7 @@ public class ProgramState {
                                 this.outDeepCopy(),
                                 this.fileTableDeepCopy(),
                                 this.heapDeepCopy(),
+                                this.proceduresTableDeepCopy(),
                                 this.originalProgram.deepCopy());
     }
 
@@ -154,8 +192,45 @@ public class ProgramState {
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +
-                "Heap\n" + this.heap.toString()
+                "Heap\n" + this.heap.toString() +
+                "Procedures\n" + this.proceduresTable.toString()
                 +"\n\n";
+    }
+
+    public static class ProceduresTableEntry{
+        String name;
+        String parameters;
+        IStatement body;
+
+        public ProceduresTableEntry(String name, List<String> parameters, IStatement body) {
+            this.name = name;
+            parameters.stream().reduce((a,b)->a + ", " + b).ifPresent(s->this.parameters = s);
+            this.body = body;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getParameters() {
+            return parameters;
+        }
+
+        public IStatement getBody() {
+            return body;
+        }
+
+        public void setName(String variableName) {
+            this.name = variableName;
+        }
+
+        public void setParameters(String parameters) {
+            this.parameters = parameters;
+        }
+
+        public void setBody(IStatement body) {
+            this.body = body;
+        }
     }
 }
 
