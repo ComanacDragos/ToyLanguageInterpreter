@@ -1,0 +1,2155 @@
+Program: 1
+Execution stack
+(
+int v;
+int x;
+int y;
+v = 0;
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+int x;
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+int x;
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+int x;
+)
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+int x;
+)
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+int x;
+)
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v;
+)
+(
+int x;
+)
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int x;
+)
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int x;
+)
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int y;
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int y;
+)
+(
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int y;
+)
+(
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = 0;
+)
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+(repeat (fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);) until v == 3);
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+)
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+)
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+v = (v - 1);
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+(
+v = (v - 1);
+)
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+)
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 2
+Execution stack
+Symbols table
+v -> -1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+)
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 3
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 3
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 3
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 3
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 3
+Execution stack
+(
+v = (v - 1);
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 3
+Execution stack
+(
+v = (v - 1);
+)
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+)
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 3
+Execution stack
+Symbols table
+v -> 0
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+fork(
+print(v);
+v = (v - 1);
+)
+)
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v = (v + 1);
+)
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+print(v);
+v = (v - 1);
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+while(!(v == 3)){
+fork(
+print(v);
+v = (v - 1);
+)
+v = (v + 1);
+}
+)
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+print(v);
+)
+(
+v = (v - 1);
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 0
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+v = (v - 1);
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+x = 1;
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 0
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+(
+v = (v - 1);
+)
+Symbols table
+v -> 2
+x -> 0
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+x = 1;
+)
+(
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 0
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 4
+Execution stack
+Symbols table
+v -> 1
+x -> 0
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+x = 1;
+)
+(
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 0
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+)
+(
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+)
+(
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+y = 3;
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+y = 3;
+)
+(
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+y = 3;
+)
+(
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 0
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 3
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 3
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+)
+(
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 3
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+NOP;
+)
+(
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 3
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 3
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print((v * 10));
+)
+Symbols table
+v -> 3
+x -> 1
+y -> 3
+Out
+0
+1
+2
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+Symbols table
+v -> 3
+x -> 1
+y -> 3
+Out
+0
+1
+2
+30
+File table
+Heap
+
+
+

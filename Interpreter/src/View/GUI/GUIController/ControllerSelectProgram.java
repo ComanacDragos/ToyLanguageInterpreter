@@ -16,6 +16,7 @@ import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
 import Model.Statements.ExtraStatements.ConditionalAssignmentStatement;
 import Model.Statements.ExtraStatements.ForStatement;
+import Model.Statements.ExtraStatements.RepeatUntilStatement;
 import Model.Statements.ExtraStatements.SwitchStatement;
 import Model.Statements.FileStatements.CloseReadFileStatement;
 import Model.Statements.FileStatements.OpenReadFileStatement;
@@ -1308,6 +1309,84 @@ public class ControllerSelectProgram {
                 "v= ((rh(b)-2)>rh(a))?100:200;\n" +
                 "print(v);",
                 ex23
+        );
+
+        IStatement ex24 = new CompoundStatement(
+            new CompoundStatement(
+                    new CompoundStatement(
+                            new VariableDeclarationStatement("v", new IntType()),
+                            new VariableDeclarationStatement("x", new IntType())
+                    ),
+                    new CompoundStatement(
+                            new VariableDeclarationStatement("y", new IntType()),
+                            new AssignStatement("v", new ValueExpression(new IntValue(0)))
+                    )),
+                    new CompoundStatement(
+                            new RepeatUntilStatement(
+                                    new CompoundStatement(
+                                            new ForkStatement(
+                                                    new CompoundStatement(
+                                                            new PrintStatement(new VariableExpression("v")),
+                                                            new AssignStatement(
+                                                                    "v",
+                                                                    new ArithmeticExpression(
+                                                                            new VariableExpression("v"),
+                                                                            new ValueExpression(new IntValue(1)),
+                                                                            ArithmeticExpression.ArithmeticOperation.SUBTRACTION
+                                                                    )
+                                                            )
+                                                    )
+                                            ),
+                                            new AssignStatement(
+                                                    "v",
+                                                    new ArithmeticExpression(
+                                                            new VariableExpression("v"),
+                                                            new ValueExpression(new IntValue(1)),
+                                                            ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                    )
+                                            )
+                                    ),
+                                    new RelationalExpression(
+                                            new VariableExpression("v"),
+                                            new ValueExpression(new IntValue(3)),
+                                            RelationalExpression.RelationalOperation.EQUAL
+                                    )
+
+                            ),
+                            new CompoundStatement(
+                                    new AssignStatement(
+                                            "x",
+                                            new ValueExpression(new IntValue(1))
+                                    ),
+                                    new CompoundStatement(
+                                            new NopStatement(),
+                                            new CompoundStatement(
+                                                    new AssignStatement(
+                                                            "y",
+                                                            new ValueExpression(new IntValue(3))
+                                                    ),
+                                                    new CompoundStatement(
+                                                            new NopStatement(),
+                                                            new PrintStatement(
+                                                                    new ArithmeticExpression(
+                                                                            new VariableExpression("v"),
+                                                                            new ValueExpression(new IntValue(10)),
+                                                                            ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                    )
+                            )
+                    )
+            );
+
+        this.programsDescriptions.put(
+                "int v; int x; int y; v=0;\n" +
+                "(repeat (fork(print(v);v=v-1);v=v+1) until v==3);\n" +
+                "x=1;nop;y=3;nop;\n" +
+                "print(v*10)      ",
+                ex24
         );
     }
 }
