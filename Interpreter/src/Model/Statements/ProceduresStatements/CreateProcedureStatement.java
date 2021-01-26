@@ -10,6 +10,7 @@ import javafx.util.Pair;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CreateProcedureStatement implements IStatement {
     String procedureName;
@@ -68,12 +69,7 @@ public class CreateProcedureStatement implements IStatement {
 
     @Override
     public String toString() {
-        String localParameters = "";
-        Optional<String> optionalS = this.parameters.stream()
-                .reduce((a,b)->a + ", " + b);
-        if(optionalS.isPresent())
-            localParameters = optionalS.get();
-
-        return "procedure " + this.procedureName + "(" + localParameters + ")\n{" + this.procedureBody + "\n}";
+        return "procedure " + this.procedureName + "(" +
+                String.join(", ", this.parameters) + ")\n{" + this.procedureBody + "\n}";
     }
 }

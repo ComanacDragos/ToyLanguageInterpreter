@@ -10,11 +10,9 @@ import Model.Types.IType;
 import Model.Values.IValue;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class CallFunctionStatement implements IStatement {
     String procedureName;
@@ -92,13 +90,9 @@ public class CallFunctionStatement implements IStatement {
 
     @Override
     public String toString() {
-        String parameters = "";
-        Optional<String> optionalS = this.expressions.stream()
-                .map(Object::toString)
-                .reduce((a,b)->a + ", " + b);
-        if(optionalS.isPresent())
-            parameters = optionalS.get();
-
-        return "call " + this.procedureName + "(" + parameters + ");";
+        return "call " + this.procedureName + "(" +
+                this.expressions.stream()
+                .map(Objects::toString)
+                .collect(Collectors.joining(", "))+ ");";
     }
 }
