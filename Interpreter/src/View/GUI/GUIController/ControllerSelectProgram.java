@@ -14,10 +14,7 @@ import Model.Statements.*;
 import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
-import Model.Statements.ExtraStatements.ConditionalAssignmentStatement;
-import Model.Statements.ExtraStatements.ForStatement;
-import Model.Statements.ExtraStatements.RepeatUntilStatement;
-import Model.Statements.ExtraStatements.SwitchStatement;
+import Model.Statements.ExtraStatements.*;
 import Model.Statements.FileStatements.CloseReadFileStatement;
 import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
@@ -79,7 +76,7 @@ public class ControllerSelectProgram {
         if(mouseEvent.getClickCount() == 2){
             try{
                 String key =  this.programsListView.getSelectionModel().getSelectedItem();
-                IStatement statement = this.programsDescriptions.get(key.substring(key.indexOf(' ') + 1));
+                IStatement statement = this.programsDescriptions.get(key.substring(key.indexOf(' ') + 1)).deepCopy();
 
                 try{
                     statement.typeCheck(new MyDictionary<>());
@@ -1387,6 +1384,63 @@ public class ControllerSelectProgram {
                 "x=1;nop;y=3;nop;\n" +
                 "print(v*10)      ",
                 ex24
+        );
+
+        IStatement ex25 = new CompoundStatement(
+            new VariableDeclarationStatement("v", new IntType()),
+            new CompoundStatement(
+                new AssignStatement("v", new ValueExpression(new IntValue(0))),
+                new CompoundStatement(
+                        new WhileStatement(
+                                new RelationalExpression(
+                                        new VariableExpression("v"),
+                                        new ValueExpression(new IntValue(3)),
+                                        RelationalExpression.RelationalOperation.LESS_THAN
+                                ),
+                                new CompoundStatement(
+                                        new ForkStatement(
+                                                new CompoundStatement(
+                                                        new PrintStatement(new VariableExpression("v")),
+                                                        new AssignStatement(
+                                                                "v",
+                                                                new ArithmeticExpression(
+                                                                        new VariableExpression("v"),
+                                                                        new ValueExpression(new IntValue(1)),
+                                                                        ArithmeticExpression.ArithmeticOperation.SUBTRACTION
+                                                                )
+                                                        )
+                                                )
+                                        ),
+                                        new AssignStatement(
+                                                "v",
+                                                new ArithmeticExpression(
+                                                        new VariableExpression("v"),
+                                                        new ValueExpression(new IntValue(1)),
+                                                        ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                )
+                                        )
+                                )
+                        ),
+                        new CompoundStatement(
+                                new SleepStatement(new ValueExpression(new IntValue(5))),
+                                new PrintStatement(
+                                        new ArithmeticExpression(
+                                                new VariableExpression("v"),
+                                                new ValueExpression(new IntValue(10)),
+                                                ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                        )
+                                )
+                        )
+                )
+            )
+        );
+
+        this.programsDescriptions.put(
+            "v=0;\n" +
+                "(while(v<3) (fork(print(v);v=v+1);v=v+1);\n" +
+                "sleep(5);\n" +
+                "print(v*10)"
+            ,ex25
         );
     }
 }
