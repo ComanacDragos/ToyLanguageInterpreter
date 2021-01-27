@@ -5,6 +5,7 @@ import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Expressions.BinaryExpressions.ArithmeticExpression;
 import Model.Expressions.BinaryExpressions.LogicExpression;
+import Model.Expressions.BinaryExpressions.MulExpression;
 import Model.Expressions.BinaryExpressions.RelationalExpression;
 import Model.Expressions.UnaryExpressions.ReadHeapExpression;
 import Model.Expressions.ValueExpression;
@@ -1441,6 +1442,30 @@ public class ControllerSelectProgram {
                 "sleep(5);\n" +
                 "print(v*10)"
             ,ex25
+        );
+
+        IStatement ex26 = new CompoundStatement(
+                new CompoundStatement(
+                    new VariableDeclarationStatement("v1", new IntType()),
+                    new VariableDeclarationStatement("v2", new IntType())
+                ),
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new AssignStatement("v1", new ValueExpression(new IntValue(2))),
+                                new AssignStatement("v2", new ValueExpression(new IntValue(3)))
+                        ),
+                        new PrintStatement(
+                                new MulExpression(
+                                        new VariableExpression("v1"),
+                                        new VariableExpression("v2")
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "v1=2;v2=3; print(MUL(v1,v2));",
+                ex26
         );
     }
 }

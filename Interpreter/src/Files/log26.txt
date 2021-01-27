@@ -1,0 +1,310 @@
+Program: 1
+Execution stack
+(
+int v1;
+int v2;
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v1;
+int v2;
+)
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v1;
+int v2;
+)
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v1;
+)
+(
+int v2;
+)
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v1;
+)
+(
+int v2;
+)
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v2;
+)
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+int v2;
+)
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v1 = 2;
+v2 = 3;
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v1 = 2;
+v2 = 3;
+)
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v1 = 2;
+v2 = 3;
+)
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v1 = 2;
+)
+(
+v2 = 3;
+)
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v1 = 2;
+)
+(
+v2 = 3;
+)
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 0
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v2 = 3;
+)
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 2
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+v2 = 3;
+)
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 2
+v2 -> 0
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 2
+v2 -> 3
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+(
+print(((v1 * v2)-(v1 + v2)));
+)
+Symbols table
+v1 -> 2
+v2 -> 3
+Out
+File table
+Heap
+
+
+
+Program: 1
+Execution stack
+Symbols table
+v1 -> 2
+v2 -> 3
+Out
+1
+File table
+Heap
+
+
+
