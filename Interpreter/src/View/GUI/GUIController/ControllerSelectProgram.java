@@ -19,6 +19,9 @@ import Model.Statements.FileStatements.OpenReadFileStatement;
 import Model.Statements.FileStatements.ReadFileStatement;
 import Model.Statements.HeapStatements.NewStatement;
 import Model.Statements.HeapStatements.WriteHeapStatement;
+import Model.Statements.SemaphoreStatements.AcquireStatement;
+import Model.Statements.SemaphoreStatements.CreateSemaphoreStatement;
+import Model.Statements.SemaphoreStatements.ReleaseStatement;
 import Model.Types.BoolType;
 import Model.Types.IntType;
 import Model.Types.ReferenceType;
@@ -94,7 +97,7 @@ public class ControllerSelectProgram {
                 MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                 MyHeap heap = new MyHeap();
 
-                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, new MySemaphore(), statement);
 
                 IRepository repository = new Repository("src/Files/log" + (this.programsListView.getSelectionModel().getSelectedIndices().get(0) + 1) + ".txt");
                 Controller interpreterController = new Controller(repository);
@@ -879,6 +882,90 @@ public class ControllerSelectProgram {
                 "print(a);" +
                 "print(b);",
                 ex18
+        );
+
+        IStatement ex19 = new CompoundStatement(
+            new CompoundStatement(
+                    new CompoundStatement(
+                            new VariableDeclarationStatement("v1", new ReferenceType(new IntType())),
+                            new VariableDeclarationStatement("cnt", new IntType())
+                    ),
+                    new CompoundStatement(
+                            new NewStatement("v1", new ValueExpression(new IntValue(2))),
+                            new CreateSemaphoreStatement("cnt", new ReadHeapExpression(new VariableExpression("v1")), new ValueExpression(new IntValue(1)))
+                    )
+            ),
+            new CompoundStatement(
+                    new ForkStatement(
+                            new CompoundStatement(
+                                    new AcquireStatement("cnt"),
+                                    new CompoundStatement(
+                                            new WriteHeapStatement("v1",
+                                                    new ArithmeticExpression(
+                                                            new ReadHeapExpression(new VariableExpression("v1")),
+                                                            new ValueExpression(new IntValue(10)),
+                                                            ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                    )),
+                                            new CompoundStatement(
+                                                    new PrintStatement(new ReadHeapExpression(new VariableExpression("v1"))),
+                                                    new ReleaseStatement("cnt")
+                                            )
+                                    )
+                            )
+                    ),
+                    new CompoundStatement(
+                            new ForkStatement(
+                                    new CompoundStatement(
+                                            new AcquireStatement("cnt"),
+                                            new CompoundStatement(
+                                                    new WriteHeapStatement("v1",
+                                                            new ArithmeticExpression(
+                                                                    new ReadHeapExpression(new VariableExpression("v1")),
+                                                                    new ValueExpression(new IntValue(10)),
+                                                                    ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                            )),
+                                                    new CompoundStatement(
+                                                            new WriteHeapStatement("v1",
+                                                                    new ArithmeticExpression(
+                                                                            new ReadHeapExpression(new VariableExpression("v1")),
+                                                                            new ValueExpression(new IntValue(2)),
+                                                                            ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                    )),
+                                                           new CompoundStatement(
+                                                                   new PrintStatement(new ReadHeapExpression(new VariableExpression("v1"))),
+                                                                   new ReleaseStatement("cnt")
+                                                           )
+                                                    )
+                                            )
+                                    )
+                            ),
+                            new CompoundStatement(
+                                    new AcquireStatement("cnt"),
+                                    new CompoundStatement(
+                                            new PrintStatement(
+                                                    new ArithmeticExpression(
+                                                            new ReadHeapExpression(new VariableExpression("v1")),
+                                                            new ValueExpression(new IntValue(1)),
+                                                            ArithmeticExpression.ArithmeticOperation.SUBTRACTION
+                                                    )
+                                            ),
+                                            new ReleaseStatement("cnt")
+                                    )
+                            )
+                    )
+            )
+        );
+
+        this.programsDescriptions.put(
+                "Ref int v1; int cnt;\n" +
+                "new(v1,2);newSemaphore(cnt,rH(v1),1);\n" +
+                "fork(acquire(cnt);wh(v1,rh(v1)*10));print(rh(v1));release(cnt));\n" +
+                "fork(acquire(cnt);wh(v1,rh(v1)*10));wh(v1,rh(v1)*2));print(rh(v1));release(cnt\n" +
+                "));\n" +
+                "acquire(cnt);\n" +
+                "print(rh(v1)-1);\n" +
+                "release(cnt)",
+                ex19
         );
     }
 }

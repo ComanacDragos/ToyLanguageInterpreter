@@ -5,8 +5,11 @@ import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
+import javafx.util.Pair;
 
 import java.io.BufferedReader;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -21,13 +24,16 @@ public class ProgramState {
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
+    MySemaphore semaphoreTable;
+
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MySemaphore semaphoreTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
         this.originalProgram = originalProgram;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.semaphoreTable = semaphoreTable;
         this.programId = ProgramState.currentId.incrementAndGet();
     }
 
@@ -83,6 +89,14 @@ public class ProgramState {
         return programId;
     }
 
+    public MySemaphore getSemaphoreTable() {
+        return semaphoreTable;
+    }
+
+    public void setSemaphoreTable(MySemaphore semaphoreTable) {
+        this.semaphoreTable = semaphoreTable;
+    }
+
     public MyIStack<IStatement> executionStackDeepCopy(){
         MyIStack<IStatement> newExecutionStack = new MyStack<>();
         this.executionStack.stream().map(
@@ -127,6 +141,18 @@ public class ProgramState {
         return newHeap;
     }
 
+    public MySemaphore semaphoreDeepCopy(){
+        MySemaphore newSemaphore = new MySemaphore();
+
+        this.semaphoreTable.stream().
+                map(e->{
+                    List<Integer> newList = new LinkedList<>(e.getValue().getValue().getKey());
+                   return new Pair<>(e.getKey(), new Pair<>(e.getValue().getKey(), e.getValue().getValue()));
+                })
+                .forEach(e->newSemaphore.put(e.getKey(),e.getValue()));
+        return newSemaphore;
+    }
+
     public ProgramState deepCopy(){
 
         return new ProgramState(this.executionStackDeepCopy(),
@@ -134,6 +160,7 @@ public class ProgramState {
                                 this.outDeepCopy(),
                                 this.fileTableDeepCopy(),
                                 this.heapDeepCopy(),
+                                this.semaphoreDeepCopy(),
                                 this.originalProgram.deepCopy());
     }
 
@@ -154,7 +181,8 @@ public class ProgramState {
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +
-                "Heap\n" + this.heap.toString()
+                "Heap\n" + this.heap.toString() +
+                "Semaphore\n" + this.semaphoreTable.toString()
                 +"\n\n";
     }
 }
