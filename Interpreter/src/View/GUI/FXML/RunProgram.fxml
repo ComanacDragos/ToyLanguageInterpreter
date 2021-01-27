@@ -36,7 +36,7 @@
       <ListView fx:id="programIdsListView" onMouseClicked="#handleSelectProgram" prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <ListView fx:id="executionStackListView" prefHeight="631.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="3" />
       <Label prefHeight="17.0" prefWidth="86.0" text="Execution stack" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <ListView fx:id="outListView" prefHeight="631.0" prefWidth="397.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+      <ListView fx:id="outListView" prefHeight="631.0" prefWidth="397.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
       <Label text="Out" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <Label text="Program states" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Label text="Heap" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
@@ -51,6 +51,14 @@
       <Label text="Symbols table" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <Label fx:id="numberOfProgramStatesLabel" text="Number of program states: 0" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <Button fx:id="openNewWindowButton" mnemonicParsing="false" onAction="#handleOpenNewWindow" prefHeight="25.0" prefWidth="314.0" text="Open this program in new window" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+      <Label text="Procedures" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <TableView fx:id="proceduresTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+        <columns>
+          <TableColumn fx:id="procedureNameColumn" prefWidth="64.0" text="Name" />
+          <TableColumn fx:id="procedureParameterColumn" prefWidth="86.0" text="Parameters" />
+            <TableColumn fx:id="procedureBodyColumn" prefWidth="136.0" text="Body" />
+        </columns>
+      </TableView>
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

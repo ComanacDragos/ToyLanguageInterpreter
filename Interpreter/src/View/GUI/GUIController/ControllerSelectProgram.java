@@ -42,6 +42,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -89,12 +91,13 @@ public class ControllerSelectProgram {
 
                 MyIStack<IStatement> executionStack = new MyStack<>();
                 executionStack.push(statement);
-                MyIDictionary<String, IValue> symbolsTable = new MyDictionary<>();
+                MyIStack<MyIDictionary<String, IValue>> symbolsTable = new MyStack<>();
+                symbolsTable.push(new MyDictionary<>());
                 MyIList<IValue> out = new MyList<>();
                 MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                 MyHeap heap = new MyHeap();
 
-                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, new MyDictionary<>(), statement);
 
                 IRepository repository = new Repository("src/Files/log" + (this.programsListView.getSelectionModel().getSelectedIndices().get(0) + 1) + ".txt");
                 Controller interpreterController = new Controller(repository);
@@ -879,6 +882,93 @@ public class ControllerSelectProgram {
                 "print(a);" +
                 "print(b);",
                 ex18
+        );
+
+        IStatement ex19 = new CompoundStatement(
+                new CompoundStatement(
+                        new CreateProcedureStatement(
+                                "sum",
+                                Arrays.asList("a", "b"),
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement("v", new IntType()),
+                                        new CompoundStatement(
+                                                new AssignStatement("v", new ArithmeticExpression(
+                                                        new VariableExpression("a"),
+                                                        new VariableExpression("b"),
+                                                        ArithmeticExpression.ArithmeticOperation.ADDITION
+                                                )),
+                                                new PrintStatement(new VariableExpression("v"))
+                                        )
+                                )
+                        ),
+                        new CreateProcedureStatement(
+                                "product",
+                                Arrays.asList("a", "b"),
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement("v", new IntType()),
+                                        new CompoundStatement(
+                                                new AssignStatement("v", new ArithmeticExpression(
+                                                        new VariableExpression("a"),
+                                                        new VariableExpression("b"),
+                                                        ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                )),
+                                                new PrintStatement(new VariableExpression("v"))
+                                        )
+                                )
+                        )
+                ),
+                new CompoundStatement(
+                        new CompoundStatement(
+                                new CompoundStatement(
+                                        new VariableDeclarationStatement("v", new IntType()),
+                                        new VariableDeclarationStatement("w", new IntType())
+                                ),
+                                new CompoundStatement(
+                                        new AssignStatement("v", new ValueExpression(new IntValue(2))),
+                                        new AssignStatement("w", new ValueExpression(new IntValue(5)))
+                                )
+                        ),
+                        new CompoundStatement(
+                                new CompoundStatement(
+                                        new CallProcStatement("sum", Arrays.asList(
+                                                new ArithmeticExpression(
+                                                        new VariableExpression("v"),
+                                                        new ValueExpression(new IntValue(10)),
+                                                        ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                ),
+                                                new VariableExpression("w")
+                                        )
+                                        ),
+                                        new PrintStatement(new VariableExpression("v"))
+                                ),
+                                new CompoundStatement(
+                                        new ForkStatement(
+                                                new CallProcStatement("product", Arrays.asList(
+                                                        new VariableExpression("v"),
+                                                        new VariableExpression("w")
+                                                )
+                                                )
+                                        ),
+                                        new ForkStatement(
+                                                new CallProcStatement("sum", Arrays.asList(
+                                                        new VariableExpression("v"),
+                                                        new VariableExpression("w")
+                                                )
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
+
+        this.programsDescriptions.put(
+                "procedure sum(a,b) v=a+b;print(v)\n" +
+                "procedure product(a,b) v=a*b;print(v)\n" +
+                "and the main program is\n" +
+                "v=2;w=5;call sum(v*10,w);print(v);\n" +
+                "fork(call product(v,w);\n" +
+                "fork(call sum(v,w)))",
+                ex19
         );
     }
 }

@@ -5,15 +5,18 @@ import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
+import javafx.util.Pair;
 
 import java.io.BufferedReader;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class ProgramState {
     MyIStack<IStatement> executionStack;
-    MyIDictionary<String, IValue> symbolsTable;
+    MyIStack<MyIDictionary<String, IValue>> symbolsTable;
     MyIList<IValue> out;
     IStatement originalProgram;
     MyIDictionary<String, BufferedReader> fileTable;
@@ -21,13 +24,16 @@ public class ProgramState {
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
+    MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTable;
+
+    public ProgramState(MyIStack<IStatement> executionStack, MyIStack<MyIDictionary<String, IValue>> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
         this.originalProgram = originalProgram;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.proceduresTable = proceduresTable;
         this.programId = ProgramState.currentId.incrementAndGet();
     }
 
@@ -36,7 +42,7 @@ public class ProgramState {
     }
 
     public MyIDictionary<String, IValue> getSymbolsTable() {
-        return symbolsTable;
+        return symbolsTable.peek();
     }
 
     public MyIList<IValue> getOut() {
@@ -59,8 +65,12 @@ public class ProgramState {
         this.out = out;
     }
 
-    public void setSymbolsTable(MyIDictionary<String, IValue> symbolsTable) {
+    public void setSymbolsTable(MyIStack<MyIDictionary<String, IValue>> symbolsTable) {
         this.symbolsTable = symbolsTable;
+    }
+
+    public MyIStack<MyIDictionary<String, IValue>> getSymbolsTableStack(){
+        return this.symbolsTable;
     }
 
     public MyIDictionary<String, BufferedReader> getFileTable() {
@@ -83,6 +93,14 @@ public class ProgramState {
         return programId;
     }
 
+    public MyIDictionary<String, Pair<List<String>, IStatement>> getProceduresTable() {
+        return proceduresTable;
+    }
+
+    public void setProceduresTable(MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTable) {
+        this.proceduresTable = proceduresTable;
+    }
+
     public MyIStack<IStatement> executionStackDeepCopy(){
         MyIStack<IStatement> newExecutionStack = new MyStack<>();
         this.executionStack.stream().map(
@@ -91,13 +109,26 @@ public class ProgramState {
         return newExecutionStack;
     }
 
-    public MyIDictionary<String, IValue> symbolsTableDeepCopy(){
-        MyIDictionary<String, IValue> newSymbolsTable = new MyDictionary<>();
-        this.symbolsTable.stream().collect(
-                Collectors.toMap(Map.Entry::getKey, e -> e.getValue().deepCopy())
-        ).entrySet().stream().forEach(
-                e -> newSymbolsTable.put(e.getKey(), e.getValue())
-        );
+    public MyIStack<MyIDictionary<String, IValue>> symbolsTableDeepCopy(){
+        MyIStack<MyIDictionary<String, IValue>> auxSymbolsTable = new MyStack<>();
+
+        this.symbolsTable.stream()
+                .map(
+                        table->{
+                            MyIDictionary<String, IValue> newSymbolsTable = new MyDictionary<>();
+                            table.stream().collect(
+                                    Collectors.toMap(Map.Entry::getKey, e -> e.getValue().deepCopy())
+                            ).entrySet().stream().forEach(
+                                    e -> newSymbolsTable.put(e.getKey(), e.getValue())
+                            );
+                            return newSymbolsTable;
+                        }
+                )
+                .forEach(auxSymbolsTable::push);
+
+        MyIStack<MyIDictionary<String, IValue>> newSymbolsTable = new MyStack<>();
+        auxSymbolsTable.forEach(newSymbolsTable::push);
+
         return newSymbolsTable;
     }
 
@@ -127,6 +158,20 @@ public class ProgramState {
         return newHeap;
     }
 
+    public MyIDictionary<String, Pair<List<String>, IStatement>> proceduresTableDeepCopy(){
+        MyIDictionary<String, Pair<List<String>, IStatement>> newProceduresTable = new MyDictionary<>();
+
+        this.proceduresTable.stream()
+                .map(
+                        e->{
+                            List<String> newList = new LinkedList<>(e.getValue().getKey());
+                            return new Pair<>(e.getKey(), new Pair<>(newList, e.getValue().getValue().deepCopy()));
+                        }
+                )
+                .forEach(e->newProceduresTable.put(e.getKey(), e.getValue()));
+        return newProceduresTable;
+    }
+
     public ProgramState deepCopy(){
 
         return new ProgramState(this.executionStackDeepCopy(),
@@ -134,6 +179,7 @@ public class ProgramState {
                                 this.outDeepCopy(),
                                 this.fileTableDeepCopy(),
                                 this.heapDeepCopy(),
+                                this.proceduresTableDeepCopy(),
                                 this.originalProgram.deepCopy());
     }
 
@@ -154,7 +200,8 @@ public class ProgramState {
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +
-                "Heap\n" + this.heap.toString()
+                "Heap\n" + this.heap.toString() +
+                "Procedures\n" + this.proceduresTable
                 +"\n\n";
     }
 }

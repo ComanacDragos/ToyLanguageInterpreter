@@ -24,6 +24,14 @@ import java.util.stream.Collectors;
 
 public class ControllerRunProgram extends MyObserver {
     @FXML
+    TableView<ProceduresTableEntry> proceduresTableView;
+    @FXML
+    TableColumn<ProceduresTableEntry, String> procedureParameterColumn;
+    @FXML
+    TableColumn<ProceduresTableEntry, String> procedureNameColumn;
+    @FXML
+    TableColumn<ProceduresTableEntry, IStatement> procedureBodyColumn;
+    @FXML
     Button runOneStepButton;
     @FXML
     Button runAnotherProgramButton;
@@ -57,6 +65,42 @@ public class ControllerRunProgram extends MyObserver {
 
     Controller controller;
 
+    public static class ProceduresTableEntry{
+        String name;
+        String parameters;
+        IStatement body;
+
+        public ProceduresTableEntry(String name, List<String> parameters, IStatement body) {
+            this.name = name;
+            this.parameters = String.join(", ", parameters);
+            this.body = body;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getParameters() {
+            return parameters;
+        }
+
+        public void setParameters(String parameters) {
+            this.parameters = parameters;
+        }
+
+        public IStatement getBody() {
+            return body;
+        }
+
+        public void setBody(IStatement body) {
+            this.body = body;
+        }
+    }
+
     @FXML
     void initialize(){
         this.programIdsListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -67,6 +111,12 @@ public class ControllerRunProgram extends MyObserver {
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        this.procedureNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        this.procedureParameterColumn.setCellValueFactory(new PropertyValueFactory<>("parameters"));
+        this.procedureBodyColumn.setCellValueFactory(new PropertyValueFactory<>("body"));
+
+
+        this.proceduresTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
@@ -96,6 +146,7 @@ public class ControllerRunProgram extends MyObserver {
                 this.setHeapTableView();
                 this.setFileTableListView();
                 this.setOutListView();
+                this.setProceduresTableView();
             }
         }
         catch (MyException exception){
@@ -191,6 +242,20 @@ public class ControllerRunProgram extends MyObserver {
         );
 
         this.outListView.setItems(out);
+    }
+
+    void setProceduresTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<ProceduresTableEntry> proceduresTableEntries = FXCollections.observableArrayList();
+
+        proceduresTableEntries.addAll(
+                program.getProceduresTable().stream()
+                .map(e->new ProceduresTableEntry(e.getKey(), e.getValue().getKey(), e.getValue().getValue()))
+                .collect(Collectors.toList())
+        );
+
+        this.proceduresTableView.setItems(proceduresTableEntries);
     }
 
     ProgramState getSelectedProgram() throws MyException{
