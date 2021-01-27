@@ -803,7 +803,7 @@ public class View {
                     MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                     MyHeap heap = new MyHeap();
 
-                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                    ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, new MyBarrier(), statement);
 
                     IRepository repository = new Repository("src/Files/log" + currentKey + ".txt");
                     Controller controller = new Controller(repository);

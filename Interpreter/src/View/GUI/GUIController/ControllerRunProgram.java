@@ -2,6 +2,7 @@ package View.GUI.GUIController;
 
 import Controller.Controller;
 import Exceptions.MyException;
+import Model.ADTs.MyBarrier;
 import Model.ProgramState;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
@@ -23,6 +24,14 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class ControllerRunProgram extends MyObserver {
+    @FXML
+    TableView <MyBarrier.BarrierEntry> barrierTableView;
+    @FXML
+    TableColumn<MyBarrier.BarrierEntry, Integer> barrierColumn;
+    @FXML
+    TableColumn<MyBarrier.BarrierEntry, Integer> barrierSizeColumn;
+    @FXML
+    TableColumn<MyBarrier.BarrierEntry, String> barrierThreadsColumn;
     @FXML
     Button runOneStepButton;
     @FXML
@@ -67,6 +76,12 @@ public class ControllerRunProgram extends MyObserver {
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        this.barrierColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.barrierSizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        this.barrierThreadsColumn.setCellValueFactory(new PropertyValueFactory<>("ids"));
+
+
+        this.barrierTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
@@ -96,6 +111,7 @@ public class ControllerRunProgram extends MyObserver {
                 this.setHeapTableView();
                 this.setFileTableListView();
                 this.setOutListView();
+                this.setBarrierTableView();
             }
         }
         catch (MyException exception){
@@ -191,6 +207,20 @@ public class ControllerRunProgram extends MyObserver {
         );
 
         this.outListView.setItems(out);
+    }
+
+    void setBarrierTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<MyBarrier.BarrierEntry> barriers = FXCollections.observableArrayList();
+
+        barriers.addAll(
+                program.getBarrierTable().stream()
+                .map(e-> new MyBarrier.BarrierEntry(e.getKey(), e.getValue().getKey(), e.getValue().getValue()))
+                .collect(Collectors.toList())
+        );
+
+        this.barrierTableView.setItems(barriers);
     }
 
     ProgramState getSelectedProgram() throws MyException{

@@ -11,6 +11,8 @@ import Model.Expressions.ValueExpression;
 import Model.Expressions.VariableExpression;
 import Model.ProgramState;
 import Model.Statements.*;
+import Model.Statements.BarrierStatements.AwaitStatement;
+import Model.Statements.BarrierStatements.CreateBarrierStatement;
 import Model.Statements.ControlFlowStatements.ForkStatement;
 import Model.Statements.ControlFlowStatements.IfStatement;
 import Model.Statements.ControlFlowStatements.WhileStatement;
@@ -94,7 +96,7 @@ public class ControllerSelectProgram {
                 MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
                 MyHeap heap = new MyHeap();
 
-                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, statement);
+                ProgramState newProgram = new ProgramState(executionStack, symbolsTable, out, fileTable, heap, new MyBarrier(), statement);
 
                 IRepository repository = new Repository("src/Files/log" + (this.programsListView.getSelectionModel().getSelectedIndices().get(0) + 1) + ".txt");
                 Controller interpreterController = new Controller(repository);
@@ -879,6 +881,77 @@ public class ControllerSelectProgram {
                 "print(a);" +
                 "print(b);",
                 ex18
+        );
+
+        IStatement ex19 = new CompoundStatement(
+            new CompoundStatement(
+                    new CompoundStatement(
+                            new CompoundStatement(
+                                    new VariableDeclarationStatement("v1", new ReferenceType(new IntType())),
+                                    new VariableDeclarationStatement("v2", new ReferenceType(new IntType()))
+                            ),
+                            new CompoundStatement(
+                                    new VariableDeclarationStatement("v3", new ReferenceType(new IntType())),
+                                    new NewStatement("v1", new ValueExpression(new IntValue(2)))
+                            )
+                    ),
+                    new CompoundStatement(
+                            new NewStatement("v2", new ValueExpression(new IntValue(3))),
+                            new CompoundStatement(
+                                    new NewStatement("v3", new ValueExpression(new IntValue(4))),
+                                    new CreateBarrierStatement("cnt", new ReadHeapExpression(new VariableExpression("v2")))
+                            )
+                    )
+            ),
+            new CompoundStatement(
+                    new ForkStatement(
+                            new CompoundStatement(
+                                    new AwaitStatement("cnt"),
+                                    new CompoundStatement(
+                                            new WriteHeapStatement("v1",
+                                                    new ArithmeticExpression(
+                                                            new ReadHeapExpression(new VariableExpression("v1")),
+                                                            new ValueExpression(new IntValue(10)),
+                                                            ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                    )),
+                                            new PrintStatement(new ReadHeapExpression(new VariableExpression("v1")))
+                                    )
+                            )
+                    ),
+                    new CompoundStatement(
+                            new ForkStatement(
+                                    new CompoundStatement(
+                                            new AwaitStatement("cnt"),
+                                            new CompoundStatement(
+                                                    new WriteHeapStatement("v2",
+                                                            new ArithmeticExpression(
+                                                                    new ReadHeapExpression(new VariableExpression("v2")),
+                                                                    new ValueExpression(new IntValue(10)),
+                                                                    ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                            )),
+                                                    new CompoundStatement(
+                                                            new WriteHeapStatement("v2",
+                                                                    new ArithmeticExpression(
+                                                                            new ReadHeapExpression(new VariableExpression("v2")),
+                                                                            new ValueExpression(new IntValue(10)),
+                                                                            ArithmeticExpression.ArithmeticOperation.MULTIPLICATION
+                                                                    )),
+                                                            new PrintStatement(new ReadHeapExpression(new VariableExpression("v2")))
+                                                    )
+                                            )
+                                    )
+                            ),
+                            new CompoundStatement(
+                                    new AwaitStatement("cnt"),
+                                    new PrintStatement(new ReadHeapExpression(new VariableExpression("v3")))
+                            )
+                    )
+            )
+        );
+
+        this.programsDescriptions.put(
+                "barrier example",
+                ex19
         );
     }
 }

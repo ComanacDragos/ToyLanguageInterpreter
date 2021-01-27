@@ -5,8 +5,11 @@ import Exceptions.MyException;
 import Model.ADTs.*;
 import Model.Statements.IStatement;
 import Model.Values.IValue;
+import javafx.util.Pair;
 
 import java.io.BufferedReader;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -21,13 +24,16 @@ public class ProgramState {
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
+    MyBarrier barrierTable;
+
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyBarrier barrierTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
         this.originalProgram = originalProgram;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.barrierTable = barrierTable;
         this.programId = ProgramState.currentId.incrementAndGet();
     }
 
@@ -83,6 +89,14 @@ public class ProgramState {
         return programId;
     }
 
+    public MyBarrier getBarrierTable() {
+        return barrierTable;
+    }
+
+    public void setBarrierTable(MyBarrier barrierTable) {
+        this.barrierTable = barrierTable;
+    }
+
     public MyIStack<IStatement> executionStackDeepCopy(){
         MyIStack<IStatement> newExecutionStack = new MyStack<>();
         this.executionStack.stream().map(
@@ -127,6 +141,22 @@ public class ProgramState {
         return newHeap;
     }
 
+    public MyBarrier barrierDeepCopy(){
+        MyBarrier newBarrier = new MyBarrier();
+
+        this.barrierTable.stream()
+                .map(
+                        e->{
+                            List<Integer> newIds = new LinkedList<>(e.getValue().getValue());
+                            return new Pair<>(e.getKey(), new Pair<>(e.getValue().getKey(), newIds));
+                        }
+                )
+                .forEach(
+                        e->newBarrier.put(e.getKey(), e.getValue())
+                );
+        return newBarrier;
+    }
+
     public ProgramState deepCopy(){
 
         return new ProgramState(this.executionStackDeepCopy(),
@@ -134,6 +164,7 @@ public class ProgramState {
                                 this.outDeepCopy(),
                                 this.fileTableDeepCopy(),
                                 this.heapDeepCopy(),
+                                this.barrierDeepCopy(),
                                 this.originalProgram.deepCopy());
     }
 
@@ -154,7 +185,8 @@ public class ProgramState {
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +
-                "Heap\n" + this.heap.toString()
+                "Heap\n" + this.heap.toString() +
+                "Barrier\n" + this.barrierTable.toString()
                 +"\n\n";
     }
 }
