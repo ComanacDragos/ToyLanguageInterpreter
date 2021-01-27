@@ -21,13 +21,16 @@ public class ProgramState {
     Integer programId;
     static AtomicInteger currentId = new AtomicInteger(0);
 
-    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, IStatement originalProgram){
+    MyLatch latchTable;
+
+    public ProgramState(MyIStack<IStatement> executionStack, MyIDictionary<String, IValue> symbolsTable, MyIList<IValue> out, MyIDictionary<String, BufferedReader> fileTable, MyHeap heap, MyLatch latchTable, IStatement originalProgram){
         this.executionStack = executionStack;
         this.symbolsTable = symbolsTable;
         this.out = out;
         this.originalProgram = originalProgram;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.latchTable = latchTable;
         this.programId = ProgramState.currentId.incrementAndGet();
     }
 
@@ -83,6 +86,14 @@ public class ProgramState {
         return programId;
     }
 
+    public MyLatch getLatchTable() {
+        return latchTable;
+    }
+
+    public void setLatchTable(MyLatch latchTable) {
+        this.latchTable = latchTable;
+    }
+
     public MyIStack<IStatement> executionStackDeepCopy(){
         MyIStack<IStatement> newExecutionStack = new MyStack<>();
         this.executionStack.stream().map(
@@ -127,6 +138,16 @@ public class ProgramState {
         return newHeap;
     }
 
+    public MyLatch latchDeepCopy(){
+        MyLatch newLatch = new MyLatch();
+
+        this.latchTable.stream().forEach(
+                e->newLatch.put(e.getKey(), e.getValue())
+        );
+
+        return newLatch;
+    }
+
     public ProgramState deepCopy(){
 
         return new ProgramState(this.executionStackDeepCopy(),
@@ -134,6 +155,7 @@ public class ProgramState {
                                 this.outDeepCopy(),
                                 this.fileTableDeepCopy(),
                                 this.heapDeepCopy(),
+                                this.latchDeepCopy(),
                                 this.originalProgram.deepCopy());
     }
 
@@ -154,7 +176,8 @@ public class ProgramState {
                 "Symbols table\n" + this.symbolsTable.toString() +
                 "Out\n" + this.out.toString() +
                 "File table\n" + this.fileTable.stream().map(Map.Entry::getKey).collect(Collectors.joining("\n")) +
-                "Heap\n" + this.heap.toString()
+                "Heap\n" + this.heap.toString() +
+                "Latch table\n" + this.latchTable.toString()
                 +"\n\n";
     }
 }

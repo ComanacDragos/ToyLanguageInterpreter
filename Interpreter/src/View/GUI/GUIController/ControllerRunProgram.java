@@ -24,6 +24,12 @@ import java.util.stream.Collectors;
 
 public class ControllerRunProgram extends MyObserver {
     @FXML
+    TableView<Pair<Integer, Integer>> latchTableView;
+    @FXML
+    TableColumn<Pair<Integer, Integer>, Integer> latchIdColumn;
+    @FXML
+    TableColumn<Pair<Integer, Integer>, Integer> latchSizeColumn;
+    @FXML
     Button runOneStepButton;
     @FXML
     Button runAnotherProgramButton;
@@ -67,6 +73,11 @@ public class ControllerRunProgram extends MyObserver {
         this.symbolsTableNameColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         this.symbolsTableValueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
 
+        this.latchIdColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
+        this.latchSizeColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
+
+
+        this.latchTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.heapTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.symbolsTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
@@ -96,6 +107,7 @@ public class ControllerRunProgram extends MyObserver {
                 this.setHeapTableView();
                 this.setFileTableListView();
                 this.setOutListView();
+                this.setLatchTableView();
             }
         }
         catch (MyException exception){
@@ -191,6 +203,19 @@ public class ControllerRunProgram extends MyObserver {
         );
 
         this.outListView.setItems(out);
+    }
+
+    void setLatchTableView(){
+        ProgramState program = this.getSelectedProgram();
+
+        ObservableList<Pair<Integer, Integer>> latch = FXCollections.observableArrayList();
+
+        latch.addAll(program.getLatchTable().stream()
+                .map(e->new Pair<>(e.getKey(), e.getValue()))
+                .collect(Collectors.toList())
+        );
+
+        this.latchTableView.setItems(latch);
     }
 
     ProgramState getSelectedProgram() throws MyException{
