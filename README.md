@@ -1,8 +1,10 @@
 # Toy-Language-Interpreter
 <br/>
-For the Advanced programming methods course in the third semester I wrote a toy language interpreter with a typechecker, multithreading, and a debugger like graphical user interface which shows the step by step execution of a program by displaying the execution stack, symbols table, heap, file table, out list and program ids. Also there is the option to open a new window so that the execution of multiple threads can be seen at the same time.<br/>
+For the Advanced programming methods course in the third semester I wrote a toy language interpreter with a typechecker, multithreading, and a debugger like graphical user interface which shows the step by step execution of a program by displaying the execution stack, symbols table, heap, file table, out list and program ids. Also there is the option to open a new window so that the execution of multiple threads can be seen at the same time and there is a garbage collector.<br/>
 
 ![run-program](https://user-images.githubusercontent.com/46956225/108714423-309f0d80-7522-11eb-8b2c-a0f90c95953f.png)
+
+![run-program](https://user-images.githubusercontent.com/46956225/108715071-069a1b00-7523-11eb-9d59-5fa67bf076b3.png)
 
 ![select-program](https://user-images.githubusercontent.com/46956225/108714441-34cb2b00-7522-11eb-96b5-023988652999.png)
 
