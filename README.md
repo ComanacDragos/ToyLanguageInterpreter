@@ -4,5 +4,11 @@ For the Advanced programming methods course in the third semester I wrote a toy 
 <a href="https://github.com/ComanacDragos/Toy-Language-Interpreter/tree/main/Interpreter/src/Model/Statements">Statements </a> supported:
 <ul>
   <li>
+    Control flow statements
+    <ul>
+      <li>Fork Statement</li>
+      <li>If statement</li>
+      <li>While Statement</li>
+    </ul>
   </li>
 </ul>
