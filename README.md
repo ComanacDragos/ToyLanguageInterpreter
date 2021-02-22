@@ -1,6 +1,11 @@
 # Toy-Language-Interpreter
 <br/>
-For the Advanced programming methods course in the third semester I wrote a toy language interpreter.<br/>
+For the Advanced programming methods course in the third semester I wrote a toy language interpreter with a typechecker, multithreading, and a debugger like graphical user interface which shows the step by step execution of a program by displaying the execution stack, symbols table, heap, file table, out list and program ids. Also there is the option to open a new window so that the execution of multiple threads can be seen at the same time.<br/>
+
+![run-program]()
+
+![select-program]()
+
 <a href="https://github.com/ComanacDragos/Toy-Language-Interpreter/tree/main/Interpreter/src/Model/Statements">Statements </a> supported:
 <ul>
   <li>
