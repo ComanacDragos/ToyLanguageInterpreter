@@ -32,3 +32,29 @@ For the Advanced programming methods course in the third semester I wrote a toy 
   <li>Variable declaration statement</li>
   <li>No operation statement</li>
 </ul>
+</br>
+<a href="https://github.com/ComanacDragos/Toy-Language-Interpreter/tree/main/Interpreter/src/Model/Expressions">Expressions</a> supported:
+
+<ul>
+  <li>
+    Binary expressions
+    <ul>
+      <li>
+        Arithmetic expression
+      </li>
+      <li>Logic expression</li>
+      <li>Relational expression</li>
+    </ul>    
+  </li>
+  <li>
+     <ul> Unary expressions
+       <li>Read heap expression</li>
+    </ul>
+  </li>
+  <li>Value expression</li>
+  <Variable expression</li>
+</ul>
+  
+  
+  
+
