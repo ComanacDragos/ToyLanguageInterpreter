@@ -47,12 +47,13 @@ For the Advanced programming methods course in the third semester I wrote a toy 
     </ul>    
   </li>
   <li>
-     <ul> Unary expressions
+    Unary expressions
+     <ul>
        <li>Read heap expression</li>
     </ul>
   </li>
   <li>Value expression</li>
-  <Variable expression</li>
+  <li>Variable expression</li>
 </ul>
   
   
