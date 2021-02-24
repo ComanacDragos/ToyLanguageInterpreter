@@ -1,6 +1,15 @@
 # Toy-Language-Interpreter
 <br/>
-For the Advanced programming methods course in the third semester I wrote a toy language interpreter with a typechecker, multithreading, and a debugger like graphical user interface which shows the step by step execution of a program by displaying the execution stack, symbols table, heap, file table, out list and program ids. Also there is the option to open a new window so that the execution of multiple threads can be seen at the same time and there is a garbage collector.<br/>
+For the Advanced programming methods course in the third semester I wrote a toy language interpreter with a typechecker, multithreading, and a debugger like graphical user interface which shows the step by step execution of a program by displaying the execution stack, symbols table, heap, file table, out list and program ids. Also there is the option to open a new window so that the execution of multiple threads can be seen at the same time and there is a garbage collector. The different branches represent implementations of different synchronization mechanisms such as:
+<ul>
+  <li>Count down latch</li>
+  <li>Semaphore</li>
+  <li>Cyclic barrier</li>
+  <li>Locks</li>
+<ul>
+Also there is a implementation of procedures and some extra statements.
+<br/>
+<br/>
 
 ![run-program](https://user-images.githubusercontent.com/46956225/108714423-309f0d80-7522-11eb-8b2c-a0f90c95953f.png)
 
@@ -38,6 +47,16 @@ For the Advanced programming methods course in the third semester I wrote a toy 
   <li>Print statement</li>
   <li>Variable declaration statement</li>
   <li>No operation statement</li>
+  <li>
+    Extra statements
+     <ul>
+       <li>Conditional assignment statement</li>
+       <li>For statement</li>
+       <li>Repeat until statement</li>
+       <li>Sleep statement</li>
+       <li>Switch statement</li>
+    </ul>
+  </li>
 </ul>
 </br>
 <a href="https://github.com/ComanacDragos/Toy-Language-Interpreter/tree/main/Interpreter/src/Model/Expressions">Expressions</a> supported:
